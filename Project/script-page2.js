@@ -1,36 +1,65 @@
 // Get the search query from the URL parameters
 const urlParams = new URLSearchParams(window.location.search);
-const searchInputVal = urlParams.get('search');
+const searchInputVal = urlParams.get("search");
+const btnTest = document.querySelector(".search-btn-test");
+const spotifyDivTest = document.getElementById("spotifyDivTest");
 
-
-
-const apiKey = 'f84cfa881cmshb8d5f3faf7b9c6dp1d4be8jsna4967ff68e8a'; // actual RapidAPI key
+const apiKey = "f84cfa881cmshb8d5f3faf7b9c6dp1d4be8jsna4967ff68e8a"; // actual RapidAPI key
 
 // Check if searchQuery exists and make API call if needed
 if (searchInputVal) {
-    // Create the API URL with the search query
-    const apiUrl = `https://genius-song-lyrics1.p.rapidapi.com/search/?q=${encodeURIComponent(searchInputVal)}&per_page=50`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': apiKey,
-            'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com',
-        },
-    };
+  // Create the API URL with the search query
+  const apiUrl = `https://genius-song-lyrics1.p.rapidapi.com/search/?q=${encodeURIComponent(
+    searchInputVal
+  )}&per_page=50`;
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": apiKey,
+      "X-RapidAPI-Host": "genius-song-lyrics1.p.rapidapi.com",
+    },
+  };
 
-        // Make fetch request
-        fetch(apiUrl, options)
-        .then(response => response.json()).then(data => {
-            // Display results on the page
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Baboon: Problem fetching data', error);
-        });
+  // Make fetch request
+  fetch(apiUrl, options)
+    .then((response) => response.json())
+    .then((data) => {
+      // Display results on the page
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error("Baboon: Problem fetching data", error);
+    });
 }
 
+const spotifyApiCall = (searchInputVal) => {
+  const SpotifyApiUrl = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(
+    searchInputVal
+  )}&type=tracks&offset=0&limit=1&numberOfTopResults=1`;
 
+  console.log(SpotifyApiUrl);
 
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": apiKey,
+      "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
+    },
+  };
+
+  // Make fetch request
+  fetch(SpotifyApiUrl, options)
+    .then((response) => response.json())
+    .then((data) => {
+      // Display results on the page
+      console.log(data);
+      displaySpotifyItems(data);
+      createSpotifyLink(data);
+    })
+    .catch((error) => {
+      console.error("Baboon: Problem fetching data", error);
+    });
+};
 
 /* 
 
