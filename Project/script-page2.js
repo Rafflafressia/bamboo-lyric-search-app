@@ -4,7 +4,7 @@ const searchInputVal = urlParams.get('search');
 
 
 
-const apiKey = '5b2db92a6fmshade04d0dba48e5ep1a5c63jsn3206621243ae'; // actual RapidAPI key
+const apiKey = 'f84cfa881cmshb8d5f3faf7b9c6dp1d4be8jsna4967ff68e8a'; // actual RapidAPI key
 
 // Check if searchQuery exists and make API call if needed
 if (searchInputVal) {
