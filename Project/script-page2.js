@@ -68,6 +68,21 @@ const displayResults = () => {
   spotifyApiCall(searchInputVal);
 };
 
+const createSpotifyLink = (data) => {
+  // Create anchor tag
+  const anchorTag = document.createElement("a");
+
+  // Set href attribute
+  anchorTag.href = data.tracks.items[0].data.albumOfTrack.sharingInfo.shareUrl;
+
+  // Set text content for the link (you can customize this text)
+  anchorTag.textContent = "Spotify Link";
+
+  // Append the anchor tag to the div
+  spotifyDivTest.innerHTML = "Link: ";
+  spotifyDivTest.appendChild(anchorTag);
+};
+
 btnTest.addEventListener("click", displayResults);
 
 /* 
