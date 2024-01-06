@@ -68,6 +68,8 @@ const displayResults = () => {
   spotifyApiCall(searchInputVal);
 };
 
+btnTest.addEventListener("click", displayResults);
+
 /* 
 
 Page 1
