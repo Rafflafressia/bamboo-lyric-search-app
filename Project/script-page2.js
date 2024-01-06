@@ -61,6 +61,13 @@ const spotifyApiCall = (searchInputVal) => {
     });
 };
 
+const displayResults = () => {
+  if (!searchInputVal) {
+    return; // check if there is nothing, else return
+  }
+  spotifyApiCall(searchInputVal);
+};
+
 /* 
 
 Page 1
