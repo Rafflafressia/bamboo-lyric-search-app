@@ -1,33 +1,42 @@
-// Get the search query from the URL parameters
-const urlParams = new URLSearchParams(window.location.search);
-const searchInputVal = urlParams.get('search');
 
+const apiKey = 'f3045d751bmsh1fa0584fb3bcd9cp181d58jsnec9f72b14b11'; // actual RapidAPI key
 
+const getLyricData = () => {
+    
+    // Get the search value from the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchInputVal = urlParams.get('search');
 
-const apiKey = 'f84cfa881cmshb8d5f3faf7b9c6dp1d4be8jsna4967ff68e8a'; // actual RapidAPI key
-
-// Check if searchQuery exists and make API call if needed
-if (searchInputVal) {
-    // Create the API URL with the search query
-    const apiUrl = `https://genius-song-lyrics1.p.rapidapi.com/search/?q=${encodeURIComponent(searchInputVal)}&per_page=50`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': apiKey,
-            'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com',
-        },
-    };
+    // Check if searchInputValue exists and make API call if needed
+    if (searchInputVal) {
+        
+        // Create the API URL with the search query
+        const apiUrl = `https://genius-song-lyrics1.p.rapidapi.com/search/?q=${encodeURIComponent(searchInputVal)}&per_page=10`;
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': apiKey,
+                'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com',
+            },
+        };
 
         // Make fetch request
         fetch(apiUrl, options)
-        .then(response => response.json()).then(data => {
-            // Display results on the page
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Baboon: Problem fetching data', error);
-        });
-}
+            .then(response => response.json()).then(data => {
+                
+                // Display results in console log
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Baboon: Problem fetching data', error);
+            });
+    }
+};
+
+// Call the function getLyricData
+getLyricData();
+
+
 
 
 
