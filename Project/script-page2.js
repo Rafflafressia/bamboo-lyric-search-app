@@ -1,6 +1,9 @@
 
 const apiKey = 'f3045d751bmsh1fa0584fb3bcd9cp181d58jsnec9f72b14b11'; // actual RapidAPI key
 
+
+
+// function to get lyricsData  
 const getLyricData = () => {
     
     // Get the search value from the URL parameters
@@ -9,6 +12,9 @@ const getLyricData = () => {
 
     // Check if searchInputValue exists and make API call if needed
     if (searchInputVal) {
+
+        // dynamically Update the title based on the search input
+        document.getElementById('search-results').innerText = `Search Results for ${searchInputVal}`;
         
         // Create the API URL with the search query
         const apiUrl = `https://genius-song-lyrics1.p.rapidapi.com/search/?q=${encodeURIComponent(searchInputVal)}&per_page=10`;
