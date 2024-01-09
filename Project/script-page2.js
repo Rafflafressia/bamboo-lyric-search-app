@@ -2,7 +2,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const searchInputVal = urlParams.get("search");
 const btnTest = document.querySelector(".search-btn-test");
-const spotifyDivTest = document.getElementById("spotifyDivTest");
 
 const apiKey = "f84cfa881cmshb8d5f3faf7b9c6dp1d4be8jsna4967ff68e8a"; // actual RapidAPI key
 
@@ -57,17 +56,16 @@ const spotifyApiCall = (searchInputVal) => {
       createSpotifyLink(data);
     })
     .catch((error) => {
-      console.error("Baboon: Problem fetching data", error);
+      console.error("Lion: Problem fetching data", error);
     });
 };
 
-// Not needed
-// const displayResults = () => {
-//   if (!searchInputVal) {
-//     return; // check if there is nothing, else return
-//   }
-//   spotifyApiCall(searchInputVal);
-// };
+const displaySpotifyResults = () => {
+  if (!searchInputVal) {
+    return; // check if there is nothing, else return
+  }
+  spotifyApiCall(searchInputVal);
+};
 
 const createSpotifyLink = (data) => {
   // Create anchor tag
@@ -84,8 +82,7 @@ const createSpotifyLink = (data) => {
   spotifyDivTest.appendChild(anchorTag);
 };
 
-btnTest.addEventListener("click", displayResults);
-
+btnTest.addEventListener("click", displaySpotifyResults);
 /* 
 
 Page 1
