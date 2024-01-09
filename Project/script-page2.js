@@ -61,12 +61,13 @@ const spotifyApiCall = (searchInputVal) => {
     });
 };
 
-const displayResults = () => {
-  if (!searchInputVal) {
-    return; // check if there is nothing, else return
-  }
-  spotifyApiCall(searchInputVal);
-};
+// Not needed
+// const displayResults = () => {
+//   if (!searchInputVal) {
+//     return; // check if there is nothing, else return
+//   }
+//   spotifyApiCall(searchInputVal);
+// };
 
 const createSpotifyLink = (data) => {
   // Create anchor tag
