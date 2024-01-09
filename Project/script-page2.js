@@ -3,7 +3,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const searchInputVal = urlParams.get("search");
 const btnTest = document.querySelector(".search-btn-test");
 
-const apiKey = "f84cfa881cmshb8d5f3faf7b9c6dp1d4be8jsna4967ff68e8a"; // actual RapidAPI key
+const apiKey = "128021619emshab73d90a7f58805p108eacjsn084f36f61a53"; // actual RapidAPI key
 
 // Check if searchQuery exists and make API call if needed
 if (searchInputVal) {
@@ -14,8 +14,7 @@ if (searchInputVal) {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "151d327872msh78dcc08290906e3p19a183jsn27d336971c75", // delete this
-      //   "X-RapidAPI-Key": apiKey, // add this
+        "X-RapidAPI-Key": apiKey, 
       "X-RapidAPI-Host": "genius-song-lyrics1.p.rapidapi.com",
     },
   };
@@ -68,6 +67,49 @@ const displaySpotifyResults = () => {
   // Call the Api
   spotifyApiCall(searchInputVal);
 };
+
+// function to get lyricsData  
+const getLyricData = () => {
+    
+    // Get the search value from the URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchInputVal = urlParams.get('search');
+
+    // Check if searchInputValue exists and make API call if needed
+    if (searchInputVal) {
+
+        // dynamically Update the title based on the search input
+        document.querySelector('.search-results-heading').innerText = `Search Results for ${searchInputVal}`;
+        
+        // Create the API URL with the search query
+        const apiUrl = `https://genius-song-lyrics1.p.rapidapi.com/search/?q=${encodeURIComponent(searchInputVal)}&per_page=10`;
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': apiKey,
+                'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com',
+            },
+        };
+
+        // Make fetch request
+        fetch(apiUrl, options)
+            .then(response => response.json()).then(data => {
+                
+                // Display results in console log
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Baboon: Problem fetching data', error);
+            });
+    }
+};
+
+// Call the function getLyricData
+getLyricData();
+
+// Arkaw's Code 
+var modalTrigger = document.querySelector(".lyric-card");
+var modalWindow = document.querySelector(".modal");
 
 const createSpotifyLink = (data) => {
   // Create anchor tag

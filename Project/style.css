@@ -1,0 +1,203 @@
+.page-one-body {
+    margin: auto;
+    padding: 0;
+    background-color: rgb(43, 43, 43);
+    color: white;
+}
+
+/* container that holds header and searchbox */
+.flex-container {
+    top: 135px; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* styles the header of the website */
+
+.bamboo-header {
+    display: flex;
+    justify-content: center;
+    width:100%;
+}
+
+/* styling for logo */
+
+.bamboo-logo {
+    width: 40%;
+    margin:30px;
+    padding: 0;
+}
+
+/* container that holds the searchbar and button */
+
+.search-box {
+    display: flex;
+    width:100%; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* style for the searchbar */
+
+.search-Input {
+    width: 30%;
+    padding: 5px 10px; 
+    border-radius: 10px;
+}
+
+/* style for the search button */
+
+.search-btn {
+    padding: 4px 10px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold; 
+    background-color: #99cc66;  
+}
+
+/* Styling for Page 2 */
+
+/* Body Class for Second Page */
+.page-two-body {
+    margin: auto;
+    padding: 0;
+    background-color: rgb(43, 43, 43);
+    color: white;
+}
+
+/* Header Container */
+.results-page-header {
+    margin: auto;
+    padding:0;
+    width:100%;
+    background-color: rgb(32, 32, 32);
+}
+
+/* Image of Logo */
+.results-bamboo-header {
+    margin: 20px 70px;
+    padding: 0px;
+    width: 15%;
+}
+
+/* Heading for Second Page */
+.search-results-heading{
+    margin: 40px 40px; 
+}
+
+.search-box-page-2{
+    background-color: #99cc66; 
+}
+
+/* style for the searchbar */
+
+.search-Input-page-2 {
+    width: 20%;
+    margin:10px 0 10px 10px;
+    padding: 5px 10px; 
+    border-radius: 10px;
+}
+
+/* style for the search button */
+
+.search-btn-page-2 {
+    padding: 4px 10px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    font-weight: bold; 
+    background-color: #ffffff;  
+}
+
+.lyric-data {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Lyric Card Styling */
+.lyric-card {
+    margin: 20px;
+    width: 200px;
+    height: 200px; 
+    background-color: rgb(37, 37, 37);
+    box-shadow: 3px 3px 10px black;
+}
+
+.lyric-card:hover {
+    width:210px;
+    height:210px; 
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+/* Modal Box Content */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */  
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    bottom: 50px; 
+    flex-direction: row;
+    background-color: rgb(37, 37, 37);
+    margin: auto;
+    padding: 0;
+    width: 720px;
+    height: auto; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+  /* Modal Card Styling */
+
+  /* Lyrics */
+  .lyric-container {
+    position: relative; 
+    left: 10px;
+    width: 60%;
+    margin:auto;
+    padding: 0px;
+  }
+
+  /* Album Art */
+  .album-art {
+    position: relative;
+    top: 40px;
+    left: 20px; 
+    margin: auto;
+    width: 175px;
+    height: 175px; 
+    background-color: rgb(37, 37, 37);
+    box-shadow: 3px 3px 10px black;
+  }
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+

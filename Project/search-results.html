@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,34 +11,41 @@
     <link rel="stylesheet" href="style.css" /> 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
-<div class = "lyric-data">
-    <h1>Search Results for</h1>
-     <ul class ="lyric-cards">
-        <!-- <li class="card">
-            <h3>(______)</h3> 
-            <h4>Temperature: __C</h4>
-            <h4>Wind: __M/S</h4>
-            <h4>Humidity: __%</h4>
-        </li>
-                  
-    </ul> -->
+ <body class="page-two-body">
 
-</div>
-      
+    <header class="results-page-header">
+        <img src="./bamboo-logo.svg" alt="picture of bamboo logo" class="results-bamboo-header">
+    </header>
 
-<div>
+    <!-- User Input Field -->
+
+    <div class="search-box-page-2">
+        <input type="text" class="search-Input-page-2" placeholder="Enter artist or song title">
+        <button class="search-btn-page-2">Search</button>  
+    </div>
     
-    <button class="search-btn-test">Search</button>
-</div>
+    <!-- Search Box Page 2 -->
+    <h1 class ="search-results-heading">Search Results for</h1>
 
-    <div id="spotifyDivTest">
+        <div class="modal-content">
+
+            <!-- Placeholder div for album image to test functionality -->
+            <div class="album-art" alt="this is placeholder for image"></div>
+           
+            <div class="lyric-container">
+                    <h1 class="title-song">Title of Song</h1>
+                    <p class="lyric-content">
+                       
+                    </p>
+            </div>
+            
+        </div>
 
     </div>
-
-
+  
     <script src="script-page2.js"></script>
-
 </body>
 </html>
