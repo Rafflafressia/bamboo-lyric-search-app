@@ -40,7 +40,7 @@ const getLyricData = () => {
 };
 
 // Call the function getLyricData
-getLyricData();
+// getLyricData();
 
 
 // Arkaw's Code 

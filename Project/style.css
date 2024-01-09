@@ -80,7 +80,7 @@
 
 /* Image of Logo */
 .results-bamboo-header {
-    margin: 20px 50px;
+    margin: 20px 70px;
     padding: 0px;
     width: 15%;
 }
@@ -88,6 +88,29 @@
 /* Heading for Second Page */
 .search-results-heading{
     margin: 40px 40px; 
+}
+
+.search-box-page-2{
+    background-color: #99cc66; 
+}
+
+/* style for the searchbar */
+
+.search-Input-page-2 {
+    width: 20%;
+    margin:10px 0 10px 10px;
+    padding: 5px 10px; 
+    border-radius: 10px;
+}
+
+/* style for the search button */
+
+.search-btn-page-2 {
+    padding: 4px 10px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    font-weight: bold; 
+    background-color: #ffffff;  
 }
 
 .lyric-data {
@@ -129,17 +152,43 @@
 
 .modal-content {
     position: relative;
-    background-color: #fefefe;
+    display: flex;
+    bottom: 50px; 
+    flex-direction: row;
+    background-color: rgb(37, 37, 37);
     margin: auto;
     padding: 0;
-    border: 1px solid #888;
-    width: 80%;
+    width: 720px;
+    height: auto; 
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s
 }
+
+  /* Modal Card Styling */
+
+  /* Lyrics */
+  .lyric-container {
+    position: relative; 
+    left: 10px;
+    width: 60%;
+    margin:auto;
+    padding: 0px;
+  }
+
+  /* Album Art */
+  .album-art {
+    position: relative;
+    top: 40px;
+    left: 20px; 
+    margin: auto;
+    width: 175px;
+    height: 175px; 
+    background-color: rgb(37, 37, 37);
+    box-shadow: 3px 3px 10px black;
+  }
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
