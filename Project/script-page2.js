@@ -52,7 +52,6 @@ const spotifyApiCall = (searchInputVal) => {
     .then((data) => {
       // Display results on the page
       console.log(data);
-      displaySpotifyItems(data);
       createSpotifyLink(data);
     })
     .catch((error) => {
