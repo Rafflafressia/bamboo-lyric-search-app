@@ -14,7 +14,8 @@ if (searchInputVal) {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": apiKey,
+      "X-RapidAPI-Key": "151d327872msh78dcc08290906e3p19a183jsn27d336971c75", // delete this
+      //   "X-RapidAPI-Key": apiKey, // add this
       "X-RapidAPI-Host": "genius-song-lyrics1.p.rapidapi.com",
     },
   };
@@ -25,6 +26,7 @@ if (searchInputVal) {
     .then((data) => {
       // Display results on the page
       console.log(data);
+      //   console.log(data.hits[0].result.header_image_thumbnail_url);
     })
     .catch((error) => {
       console.error("Baboon: Problem fetching data", error);
@@ -63,6 +65,7 @@ const displaySpotifyResults = () => {
   if (!searchInputVal) {
     return; // check if there is nothing, else return
   }
+  // Call the Api
   spotifyApiCall(searchInputVal);
 };
 
@@ -82,6 +85,7 @@ const createSpotifyLink = (data) => {
 };
 
 btnTest.addEventListener("click", displaySpotifyResults);
+
 /* 
 
 Page 1
