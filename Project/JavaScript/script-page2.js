@@ -1,6 +1,8 @@
 const searchInput = document.querySelector(".search-Input");
 const apiKey = "151d327872msh78dcc08290906e3p19a183jsn27d336971c75"; // actual RapidAPI key
 
+// Sajjad's code
+
 // Make the call and grab the data
 const spotifyApiCall = (searchInputVal) => {
   const SpotifyApiUrl = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(
@@ -23,12 +25,26 @@ const spotifyApiCall = (searchInputVal) => {
     .then((data) => {
       // Display results on the page
       console.log(data);
-      displaySpotifyItems(data);
       createSpotifyLink(data);
     })
     .catch((error) => {
       console.error("Twat: Problem fetching data", error);
     });
+};
+
+const createSpotifyLink = (data) => {
+  // Create anchor tag
+  const anchorTag = document.createElement("a");
+
+  // Set href attribute
+  anchorTag.href = data.tracks.items[0].data.albumOfTrack.sharingInfo.shareUrl;
+
+  // Set text content for the link (you can customize this text)
+  anchorTag.textContent = "Spotify Link";
+
+  // Append the anchor tag to a div of choice
+  //   spotifyDivTest.innerHTML = "Link: ";
+  //   spotifyDivTest.appendChild(anchorTag);
 };
 
 // function to get lyricsData
