@@ -3,35 +3,117 @@ const urlParams = new URLSearchParams(window.location.search);
 const searchInputVal = urlParams.get("search");
 const btnTest = document.querySelector(".search-btn-test");
 
+// Arkaw's Code 
+var modalTrigger = document.querySelector(".lyric-card");
+var modalWindow = document.querySelector(".modal");
+
+
 const apiKey = "128021619emshab73d90a7f58805p108eacjsn084f36f61a53"; // actual RapidAPI key
 
-// Check if searchQuery exists and make API call if needed
-if (searchInputVal) {
-  // Create the API URL with the search query
-  const apiUrl = `https://genius-song-lyrics1.p.rapidapi.com/search/?q=${encodeURIComponent(
-    searchInputVal
-  )}&per_page=50`;
-  const options = {
-    method: "GET",
-    headers: {
-        "X-RapidAPI-Key": apiKey, 
-      "X-RapidAPI-Host": "genius-song-lyrics1.p.rapidapi.com",
-    },
-  };
 
-  // Make fetch request
-  fetch(apiUrl, options)
-    .then((response) => response.json())
-    .then((data) => {
-      // Display results on the page
-      console.log(data);
-      //   console.log(data.hits[0].result.header_image_thumbnail_url);
-    })
-    .catch((error) => {
-      console.error("Baboon: Problem fetching data", error);
-    });
-}
 
+
+
+
+
+
+
+// Function to display the lyric search results as Thumbnails
+const displaySearchResults = (results) => {
+    
+  // Selecting the lyric-cards container
+  const lyricCardsContainer = document.querySelector('.lyric-cards');
+
+  if (!lyricCardsContainer) {
+      console.error('Baboon: Lyric cards container not found.');
+      return;
+  }
+
+  // Clears the contents before displaying new search results
+  lyricCardsContainer.innerHTML = '';
+
+  // Handling no search results
+  if (results.length === 0) {
+      
+      // Create the message element
+      const noResultsMessage = document.createElement('p');
+      
+      // add text content to the element
+      noResultsMessage.textContent = 'No results found';
+      
+      // append the element to the container on the page
+      lyricCardsContainer.appendChild(noResultsMessage);
+      return;
+  }
+
+  // Loops results and creates cards
+  for (let i = 0; i < Math.min(results.length, 10); i++) {
+      const result = results[i];
+
+      // Creates a card for each of the results
+      const card = document.createElement('div');
+      card.classList.add('thumbnail-card');
+
+      // Set the inner HTML content of the card
+      // button on click calls the getlyircs function and passes the song.id parameter 
+      card.innerHTML = `  
+          <li class="card">
+              <h3>${result.result.title}</h3> 
+              <img src='${result.result.song_art_image_thumbnail_url}'>
+              <button onclick="getLyrics(${result.result.id})">Get Lyrics</button> 
+              <div class="lyrics-container" id="lyrics-${result.result.id}"></div>
+          </li>
+      `;
+
+      // Append the card to the container
+      lyricCardsContainer.appendChild(card);
+  }
+};
+
+
+
+// Function to make Genius Lyrics Api call 
+const getLyricData = () => {
+    
+  // Get the search value from the URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchInputVal = urlParams.get('search');
+
+  // Check if searchInputValue exists and make API call if needed
+  if (searchInputVal) {
+
+      // dynamically Update the title based on the search input
+      document.getElementById('search-results').innerText = `Search Results for ${searchInputVal}`;
+      
+      // Create the API URL with the search query
+      const apiUrl = `https://genius-song-lyrics1.p.rapidapi.com/search/?q=${encodeURIComponent(searchInputVal)}&per_page=10`;
+      const options = {
+          method: 'GET',
+          headers: {
+              'X-RapidAPI-Key': apiKey,
+              'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com',
+          },
+      };
+
+      // Make fetch request
+      fetch(apiUrl, options)
+          .then(response => response.json())
+          .then(data => {
+              // Display results in console log
+              console.log(data);
+
+              displaySearchResults(data.hits);
+          })
+          .catch(error => {
+              console.error('Baboon: Problem fetching data', error);
+          });
+  }
+};
+
+
+
+
+// function to make the spotify API call 
 const spotifyApiCall = (searchInputVal) => {
   const SpotifyApiUrl = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(
     searchInputVal
@@ -60,57 +142,9 @@ const spotifyApiCall = (searchInputVal) => {
     });
 };
 
-const displaySpotifyResults = () => {
-  if (!searchInputVal) {
-    return; // check if there is nothing, else return
-  }
-  // Call the Api
-  spotifyApiCall(searchInputVal);
-};
 
-// function to get lyricsData  
-const getLyricData = () => {
-    
-    // Get the search value from the URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const searchInputVal = urlParams.get('search');
 
-    // Check if searchInputValue exists and make API call if needed
-    if (searchInputVal) {
-
-        // dynamically Update the title based on the search input
-        document.querySelector('.search-results-heading').innerText = `Search Results for ${searchInputVal}`;
-        
-        // Create the API URL with the search query
-        const apiUrl = `https://genius-song-lyrics1.p.rapidapi.com/search/?q=${encodeURIComponent(searchInputVal)}&per_page=10`;
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': apiKey,
-                'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com',
-            },
-        };
-
-        // Make fetch request
-        fetch(apiUrl, options)
-            .then(response => response.json()).then(data => {
-                
-                // Display results in console log
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Baboon: Problem fetching data', error);
-            });
-    }
-};
-
-// Call the function getLyricData
-getLyricData();
-
-// Arkaw's Code 
-var modalTrigger = document.querySelector(".lyric-card");
-var modalWindow = document.querySelector(".modal");
-
+// Function to create spotify link
 const createSpotifyLink = (data) => {
   // Create anchor tag
   const anchorTag = document.createElement("a");
@@ -126,49 +160,22 @@ const createSpotifyLink = (data) => {
   spotifyDivTest.appendChild(anchorTag);
 };
 
+
+// function to display spotify results
+const displaySpotifyResults = () => {
+  if (!searchInputVal) {
+    return; // check if there is nothing, else return
+  }
+  // Call the Api
+  spotifyApiCall(searchInputVal);
+};
+
+
+
+
+// Call the function getLyricData
+getLyricData();
+
+// Event listener for button click to display spotify result
 btnTest.addEventListener("click", displaySpotifyResults);
 
-/* 
-
-Page 1
-a) User entered the name of artist or song title. On button press user will be taken to page 2. 
-
-Page 2 
-b) User is taken to a page where the songs are presented as a list of 2 rows with 4 thumbnail items in each row
-c) on click of a thumbnail the screen will scroll down to the lyrics at the bottom of the page , the user can scroll up as well.  
-d) back to top button can we clicked
-
-
-Page 1 Code
-
-Html will have search bar and button as well as a class for each element  
-
-Javascript will connect the search bar and button to the html 
-we will also grab the search parameter in global scope. 
-
-
-Page 2 code 
-Function 1 ) Access the searchQuery from page 1 and use it as a parameter to Grabs artist information from the API 
-
-
-Function 2)  Display Artist songs as Cards [limit to 8]
-        
-        i) Display "Results for artist" at the top of the page 
-
-        ii) creating a loop to display the artist songs in array of [8]
-            -Create html element 
-            -Add content to the html element
-            -Append to the html element 
-        
-        iii) Display as thumbnail images 
-
-        iv) On click of the thumbnail , the page will scroll down to where the lyrics will be displayed 
-            i) on click call Youtube function
-        
-Function 3)  api call is made to YOUTUBE that passes the song name parameter and produces song link
-            I) Displays song link under lyrics ** (positioning can be AGILE)
-
-        
-        v) Sticky button to bring user back to the top****  
-
-*/
