@@ -18,57 +18,7 @@ const apiKey = "128021619emshab73d90a7f58805p108eacjsn084f36f61a53"; // actual R
 
 
 
-// Function to display the lyric search results as Thumbnails
-const displaySearchResults = (results) => {
-    
-  // Selecting the lyric-cards container
-  const lyricCardsContainer = document.querySelector('.lyric-cards');
 
-  if (!lyricCardsContainer) {
-      console.error('Baboon: Lyric cards container not found.');
-      return;
-  }
-
-  // Clears the contents before displaying new search results
-  lyricCardsContainer.innerHTML = '';
-
-  // Handling no search results
-  if (results.length === 0) {
-      
-      // Create the message element
-      const noResultsMessage = document.createElement('p');
-      
-      // add text content to the element
-      noResultsMessage.textContent = 'No results found';
-      
-      // append the element to the container on the page
-      lyricCardsContainer.appendChild(noResultsMessage);
-      return;
-  }
-
-  // Loops results and creates cards
-  for (let i = 0; i < Math.min(results.length, 10); i++) {
-      const result = results[i];
-
-      // Creates a card for each of the results
-      const card = document.createElement('div');
-      card.classList.add('thumbnail-card');
-
-      // Set the inner HTML content of the card
-      // button on click calls the getlyircs function and passes the song.id parameter 
-      card.innerHTML = `  
-          <li class="card">
-              <h3>${result.result.title}</h3> 
-              <img src='${result.result.song_art_image_thumbnail_url}'>
-              <button onclick="getLyrics(${result.result.id})">Get Lyrics</button> 
-              <div class="lyrics-container" id="lyrics-${result.result.id}"></div>
-          </li>
-      `;
-
-      // Append the card to the container
-      lyricCardsContainer.appendChild(card);
-  }
-};
 
 
 
@@ -115,12 +65,9 @@ const getLyricData = () => {
 
 // function to make the spotify API call 
 const spotifyApiCall = (searchInputVal) => {
-  const SpotifyApiUrl = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(
-    searchInputVal
-  )}&type=tracks&offset=0&limit=1&numberOfTopResults=1`;
-
-  console.log(SpotifyApiUrl);
-
+  
+  // Create the API URL 
+  const SpotifyApiUrl = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(searchInputVal)}&type=tracks&offset=0&limit=1&numberOfTopResults=1`;
   const options = {
     method: "GET",
     headers: {
@@ -178,4 +125,3 @@ getLyricData();
 
 // Event listener for button click to display spotify result
 btnTest.addEventListener("click", displaySpotifyResults);
-
