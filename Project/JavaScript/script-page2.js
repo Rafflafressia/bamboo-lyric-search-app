@@ -85,6 +85,13 @@ const getLyricData = () => {
   }
 };
 
+const displaySpotifyResults = () => {
+  if (!searchInputVal) {
+    return; // check if there is nothing, else return
+  }
+  spotifyApiCall(searchInputVal);
+};
+
 // Call the function getLyricData
 // getLyricData();
 
