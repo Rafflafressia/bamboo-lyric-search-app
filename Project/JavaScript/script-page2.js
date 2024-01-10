@@ -15,9 +15,6 @@ const apiKey = "128021619emshab73d90a7f58805p108eacjsn084f36f61a53"; // actual R
 
 
 
-
-
-
 // Function to display the lyric search results as Thumbnails
 const displaySearchResults = (results) => {
     
@@ -115,12 +112,9 @@ const getLyricData = () => {
 
 // function to make the spotify API call 
 const spotifyApiCall = (searchInputVal) => {
-  const SpotifyApiUrl = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(
-    searchInputVal
-  )}&type=tracks&offset=0&limit=1&numberOfTopResults=1`;
-
-  console.log(SpotifyApiUrl);
-
+  
+  // Create the API URL 
+  const SpotifyApiUrl = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(searchInputVal)}&type=tracks&offset=0&limit=1&numberOfTopResults=1`;
   const options = {
     method: "GET",
     headers: {
@@ -178,4 +172,3 @@ getLyricData();
 
 // Event listener for button click to display spotify result
 btnTest.addEventListener("click", displaySpotifyResults);
-
