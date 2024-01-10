@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./CSS/reset.css" /> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./CSS/reset.css" />
     <title>Lyric | Search</title>
     <link rel="stylesheet" href="./CSS/output.css" />
-    <link rel="stylesheet" href="./CSS/style.css" /> 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-</head>
-<body class="page-one-body">
+    <link rel="stylesheet" href="./CSS/style.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="page-one-body">
+    <section class="flex-container">
+      <!-- Website Header -->
 
-<section class="flex-container">
+      <header class="bamboo-header">
+        <img
+          src="./assets/bamboo-logo.svg"
+          alt="logo of bamboo music"
+          class="bamboo-logo"
+        />
+      </header>
 
-    <!-- Website Header -->
+      <!-- User Input Field -->
 
-    <header class="bamboo-header">
-        <img src="./assets/bamboo-logo.svg" alt="logo of bamboo music" class="bamboo-logo">
-    </header>
+      <div class="search-box">
+        <input
+          type="text"
+          class="search-Input text-black"
+          placeholder="Enter artist or song title"
+        />
+        <button class="search-btn">Search</button>
+      </div>
+    </section>
 
-
-    <!-- User Input Field -->
-
-    <div class="search-box">
-        <input type="text" class="search-Input text-black" placeholder="Enter artist or song title">
-        <button class="search-btn">Search</button>  
-    </div>
-    
-</section>
-
-
-
-<script src="./JavaScript/script.js"></script>
-
-</body>
+    <script src="./JavaScript/script.js"></script>
+  </body>
 </html>
