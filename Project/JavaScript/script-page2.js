@@ -1,5 +1,5 @@
 
-const apiKey = '151d327872msh78dcc08290906e3p19a183jsn27d336971c75'; // actual RapidAPI key
+const apiKey = '128021619emshab73d90a7f58805p108eacjsn084f36f61a53'; // actual RapidAPI key
 
 
 
@@ -40,7 +40,7 @@ const getLyricData = () => {
 };
 
 // Call the function getLyricData
-// getLyricData();
+getLyricData();
 
 
 // Arkaw's Code 
