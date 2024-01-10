@@ -44,7 +44,6 @@
 /* style for the searchbar */
 
 .search-Input {
-    color:black;
     width: 30%;
     padding: 5px 10px; 
     border-radius: 10px;
@@ -74,7 +73,7 @@
 /* Header Container */
 .results-page-header {
     margin: auto;
-    padding:10px;
+    padding:0;
     width:100%;
     background-color: rgb(32, 32, 32);
 }
@@ -88,9 +87,7 @@
 
 /* Heading for Second Page */
 .search-results-heading{
-    margin: 40px 40px;
-    font-size:40px;
-    font-weight: bold; 
+    margin: 40px 40px; 
 }
 
 .search-box-page-2{
@@ -193,11 +190,6 @@
     box-shadow: 3px 3px 10px black;
   }
 
-  .title-song {
-    font-size:40px; 
-    font-weight: bold;
-  }
-
 /* Add Animation */
 @-webkit-keyframes animatetop {
     from {top:-300px; opacity:0} 
@@ -208,3 +200,4 @@
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
   }
+
