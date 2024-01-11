@@ -61,6 +61,46 @@
     background-color: #99cc66;  
 }
 
+/* Error Window */
+.error-window {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */  
+}
+
+/* Error Box */
+.error-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(37, 37, 37);
+    border-radius: 20px;
+    font-size: 20px;
+    text-align: center;
+    margin: auto;
+    padding: 50px;
+    width: 400px;
+    height: 200px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Error Heading */
+.error-heading{
+    font-size: 50px;
+}
+
 /* Styling for Page 2 */
 
 /* Body Class for Second Page */
