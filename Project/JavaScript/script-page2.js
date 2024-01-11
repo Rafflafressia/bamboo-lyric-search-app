@@ -37,7 +37,7 @@ const getLyricData = () => {
       .then((response) => response.json())
       .then((data) => {
         // Display results in console log
-        //console.log(data);
+        console.log(data);
 
         for (var i = 0; i < 10; i++) {
           // Assuming 'data' is an array containing objects with a 'result' property
@@ -48,9 +48,11 @@ const getLyricData = () => {
 
           // Access the image URL from the 'data' array
           var imageUrl = data.hits[i].result.song_art_image_thumbnail_url;
+          var title = data.hits[i].result.title;
+          console.log(title);
 
           // Set the innerHTML of the thumbElement to an img tag with the specified URL
-          thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'>`;
+          thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4 style="color:#99CC66">${title}</h4> `;
 
           // Append the thumbElement to the lyricContainer
           lyricContainer.appendChild(thumbElement);
