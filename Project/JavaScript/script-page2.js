@@ -12,7 +12,8 @@ const modalWindow = document.querySelector(".modal");
 const getLyricData = () => {
   // Get the search value from the URL parameters
   const urlParams = new URLSearchParams(window.location.search);
-  const searchInputVal = urlParams.get("search"); // <-- First declaration
+  const searchInputVal = urlParams.get("search");
+
   // Check if searchInputValue exists and make API call if needed
   if (searchInputVal) {
     // dynamically Update the title based on the search input
