@@ -4,10 +4,6 @@ const btnTest = document.querySelector(".search-btn-test");
 const modalTrigger = document.querySelector(".lyric-card");
 const modalWindow = document.querySelector(".modal");
 
-// When user clicks on one of the thumnails/card I need to grab the value of the respective card then replace the "searchInputVal"
-// with the value i grabbed in order for the spotifi call to truly work.
-// After so, i need to append the link into the modal as " link: Spotify Link"
-
 // Function to make Genius Lyrics Api call
 const getLyricData = () => {
   // Get the search value from the URL parameters
@@ -67,57 +63,63 @@ const getLyricData = () => {
       });
   }
 };
-
-// function to make the spotify API call
+// Function to make the Spotify API call
 const spotifyApiCall = (title) => {
-  // Create the API URL
+  // Create the API URL with the provided title
   const SpotifyApiUrl = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(
     title
   )}&type=tracks&offset=0&limit=1&numberOfTopResults=1`;
+
+  // Define the options for the fetch request, including headers with API key
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": apiKey,
+      "X-RapidAPI-Key": apiKey, // Ensure 'apiKey' is defined somewhere in your code
       "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
     },
   };
 
-  // Make fetch request
+  // Make the fetch request to the Spotify API
   fetch(SpotifyApiUrl, options)
     .then((response) => response.json())
     .then((data) => {
-      // Display results on the page
+      // Display the API response data and create the Spotify link
       console.log(data);
       createSpotifyLink(data, title);
     })
     .catch((error) => {
-      console.error("Idiot: Problem fetching data", error);
+      // Handle errors during the API call
+      console.error("Error: Problem fetching data", error);
     });
 };
 
-// Function to create spotify link
+// Function to create a Spotify link and display it on the page
 const createSpotifyLink = (data, title) => {
-  // Create anchor tag
+  // Create an anchor tag for the Spotify link
   const anchorTag = document.createElement("a");
 
+  // Extract the Spotify URL from the API response
   var songUrl = data.tracks.items[0].data.albumOfTrack.sharingInfo.shareUrl;
 
-  // Set href attribute
+  // Set the href attribute of the anchor tag
   anchorTag.href = songUrl;
 
-  // Set text content for the link (you can customize this text)
+  // Set the text content for the link (customize as needed)
   anchorTag.textContent = "Spotify Link";
 
-  const testLink2 = document.querySelector(".lyric-content");
+  // Find the HTML element with the class 'lyric-content'
+  const lyricContentElement = document.querySelector(".lyric-content");
 
-  // Append the anchor tag to the div
-  testLink2.innerHTML = "Link: ";
-  testLink2.appendChild(anchorTag);
+  // Update the innerHTML of the element to display the link label
+  lyricContentElement.innerHTML = "Link: ";
+
+  // Append the anchor tag to the 'lyric-content' div
+  lyricContentElement.appendChild(anchorTag);
 };
 
-// function to display spotify results
+// Function to initiate the Spotify API call and display results
 const displaySpotifyResults = (title) => {
-  // Call the Api
+  // Call the Spotify API with the provided title
   spotifyApiCall(title);
 };
 
