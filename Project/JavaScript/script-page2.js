@@ -1,77 +1,17 @@
 const apiKey = "151d327872msh78dcc08290906e3p19a183jsn27d336971c75"; // actual RapidAPI key
-const modalTrigger = document.querySelector(".lyric-card"); // Changed var into const
-const modalWindow = document.querySelector(".modal"); // Changed var into const
 const appendSpotifyData = document.querySelector(".album-art");
-
-// re-do ashesh's task to check out somethings out
-
+const btnTest = document.querySelector(".search-btn-test");
+const modalTrigger = document.querySelector(".lyric-card");
+const modalWindow = document.querySelector(".modal");
+// Get the search value from the URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+const searchInputVal = urlParams.get("search"); // <-- First declaration
 // When user clicks on one of the thumnails/card I need to grab the value of the respective card then replace the "searchInputVal"
 // with the value i grabbed in order for the spotifi call to truly work.
 // After so, i need to append the link into the modal as " link: Spotify Link"
 
-// Sajjad's code
-const spotifyApiCall = (searchInputVal) => {
-  // Make the call and grab the data
-
-  const SpotifyApiUrl = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(
-    searchInputVal
-  )}&type=tracks&offset=0&limit=1&numberOfTopResults=1`;
-
-  console.log(SpotifyApiUrl);
-
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": apiKey,
-      "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
-    },
-  };
-
-  // Make fetch request
-  fetch(SpotifyApiUrl, options)
-    .then((response) => response.json())
-    .then((data) => {
-      // Display results on the page
-      console.log(data);
-      createSpotifyLink(data);
-    })
-    .catch((error) => {
-      console.error("Twat: Problem fetching data", error);
-    });
-};
-
-const createSpotifyLink = (data) => {
-  // Create anchor tag
-  const anchorTag = document.createElement("a");
-
-  // Set href attribute
-  anchorTag.href = data.tracks.items[0].data.albumOfTrack.sharingInfo.shareUrl;
-
-  // Set text content for the link (you can customize this text)
-  anchorTag.textContent = "Spotify Link";
-
-  // Append the anchor tag to a div of choice
-  appendSpotifyData.innerHTML = "Link: ";
-  appendSpotifyData.appendChild(anchorTag);
-};
-
-const displaySpotifyResults = () => {
-  const searchInputVal = searchInputTest.value.trim();
-
-  if (!searchInputVal) {
-    return; // check if there is nothing, else return
-  }
-  console.log(searchInputVal);
-
-  spotifyApiCall(searchInputVal);
-};
-
-// function to get lyricsData
+// Function to make Genius Lyrics Api call
 const getLyricData = () => {
-  // Get the search value from the URL parameters
-  const urlParams = new URLSearchParams(window.location.search);
-  const searchInputVal = urlParams.get("search");
-
   // Check if searchInputValue exists and make API call if needed
   if (searchInputVal) {
     // dynamically Update the title based on the search input
@@ -97,6 +37,9 @@ const getLyricData = () => {
       .then((data) => {
         // Display results in console log
         console.log(data);
+
+        //Calls Display Thumbnails function
+        // displaySearchResults(data.hits);
       })
       .catch((error) => {
         console.error("Baboon: Problem fetching data", error);
@@ -104,18 +47,64 @@ const getLyricData = () => {
   }
 };
 
-// Call the function getLyricData
-getLyricData();
+// function to make the spotify API call
+const spotifyApiCall = () => {
+  // Create the API URL
+  const SpotifyApiUrl = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(
+    searchInputVal
+  )}&type=tracks&offset=0&limit=1&numberOfTopResults=1`;
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": apiKey,
+      "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
+    },
+  };
 
-// Arkaw's Code
+  // Make fetch request
+  fetch(SpotifyApiUrl, options)
+    .then((response) => response.json())
+    .then((data) => {
+      // Display results on the page
+      console.log(data);
+      createSpotifyLink(data);
+    })
+    .catch((error) => {
+      console.error("Idiot: Problem fetching data", error);
+    });
+};
 
-// Show Modal Box Content
+// Function to create spotify link
+const createSpotifyLink = (data) => {
+  // Create anchor tag
+  const anchorTag = document.createElement("a");
+
+  // Set href attribute
+  anchorTag.href = data.tracks.items[0].data.albumOfTrack.sharingInfo.shareUrl;
+
+  // Set text content for the link (you can customize this text)
+  anchorTag.textContent = "Spotify Link";
+
+  // Append the anchor tag to the div
+  // spotifyDivTest.innerHTML = "Link: ";
+  // spotifyDivTest.appendChild(anchorTag);
+};
+
+// function to display spotify results
+const displaySpotifyResults = () => {
+  if (!searchInputVal) {
+    return; // check if there is nothing, else return
+  }
+  // Call the Api
+  spotifyApiCall(searchInputVal);
+};
+
+// Event listener for button click to display spotify result
+// btnTest.addEventListener("click", displaySpotifyResults);
 
 // On Click Event listener for modal boxes that are generated by the search results
 modalTrigger.addEventListener("click", function () {
-  console.log("This button works");
   modalWindow.style.display = "block";
-  displaySpotifyResults();
 });
 
 // When the user clicks anywhere outside of the modal, close it
@@ -125,47 +114,5 @@ window.onclick = function (event) {
   }
 };
 
-/* 
-
-Page 1
-a) User entered the name of artist or song title. On button press user will be taken to page 2. 
-
-Page 2 
-b) User is taken to a page where the songs are presented as a list of 2 rows with 4 thumbnail items in each row
-c) on click of a thumbnail the screen will scroll down to the lyrics at the bottom of the page , the user can scroll up as well.  
-d) back to top button can we clicked
-
-
-Page 1 Code
-
-Html will have search bar and button as well as a class for each element  
-
-Javascript will connect the search bar and button to the html 
-we will also grab the search parameter in global scope. 
-
-
-Page 2 code 
-Function 1 ) Access the searchQuery from page 1 and use it as a parameter to Grabs artist information from the API 
-
-
-Function 2)  Display Artist songs as Cards [limit to 8]
-        
-        i) Display "Results for artist" at the top of the page 
-
-        ii) creating a loop to display the artist songs in array of [8]
-            -Create html element 
-            -Add content to the html element
-            -Append to the html element 
-        
-        iii) Display as thumbnail images 
-
-        iv) On click of the thumbnail , the page will scroll down to where the lyrics will be displayed 
-            i) on click call Youtube function
-        
-Function 3)  api call is made to YOUTUBE that passes the song name parameter and produces song link
-            I) Displays song link under lyrics ** (positioning can be AGILE)
-
-        
-        v) Sticky button to bring user back to the top****  
-
-*/
+// Call the function getLyricData
+getLyricData();

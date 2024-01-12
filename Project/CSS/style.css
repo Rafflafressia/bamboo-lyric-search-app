@@ -7,7 +7,7 @@
 
 /* container that holds header and searchbox */
 .flex-container {
-    top: 135px; 
+    top: 250px; 
     position: relative;
     display: flex;
     flex-direction: column;
@@ -26,7 +26,7 @@
 /* styling for logo */
 
 .bamboo-logo {
-    width: 40%;
+    width: 30%;
     margin:30px;
     padding: 0;
 }
@@ -44,7 +44,7 @@
 /* style for the searchbar */
 
 .search-Input {
-    color:black;
+    color: black;
     width: 30%;
     padding: 5px 10px; 
     border-radius: 10px;
@@ -61,6 +61,46 @@
     background-color: #99cc66;  
 }
 
+/* Error Window */
+.error-window {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */  
+}
+
+/* Error Box */
+.error-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(37, 37, 37);
+    border-radius: 20px;
+    font-size: 20px;
+    text-align: center;
+    margin: auto;
+    padding: 50px;
+    width: 400px;
+    height: 200px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Error Heading */
+.error-heading{
+    font-size: 50px;
+}
+
 /* Styling for Page 2 */
 
 /* Body Class for Second Page */
@@ -74,7 +114,7 @@
 /* Header Container */
 .results-page-header {
     margin: auto;
-    padding:10px;
+    padding:20px 0px;
     width:100%;
     background-color: rgb(32, 32, 32);
 }
@@ -88,9 +128,9 @@
 
 /* Heading for Second Page */
 .search-results-heading{
-    margin: 40px 40px;
-    font-size:40px;
-    font-weight: bold; 
+    font-size: 50px;
+    font-weight: bold;
+    margin: 40px 40px; 
 }
 
 .search-box-page-2{
@@ -100,6 +140,7 @@
 /* style for the searchbar */
 
 .search-Input-page-2 {
+    color: black;
     width: 20%;
     margin:10px 0 10px 10px;
     padding: 5px 10px; 
@@ -194,7 +235,7 @@
   }
 
   .title-song {
-    font-size:40px; 
+    font-size: 40px; 
     font-weight: bold;
   }
 
@@ -208,3 +249,4 @@
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
   }
+
