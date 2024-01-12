@@ -3,15 +3,16 @@ const appendSpotifyData = document.querySelector(".album-art");
 const btnTest = document.querySelector(".search-btn-test");
 const modalTrigger = document.querySelector(".lyric-card");
 const modalWindow = document.querySelector(".modal");
-// Get the search value from the URL parameters
-const urlParams = new URLSearchParams(window.location.search);
-const searchInputVal = urlParams.get("search"); // <-- First declaration
+
 // When user clicks on one of the thumnails/card I need to grab the value of the respective card then replace the "searchInputVal"
 // with the value i grabbed in order for the spotifi call to truly work.
 // After so, i need to append the link into the modal as " link: Spotify Link"
 
 // Function to make Genius Lyrics Api call
 const getLyricData = () => {
+  // Get the search value from the URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchInputVal = urlParams.get("search"); // <-- First declaration
   // Check if searchInputValue exists and make API call if needed
   if (searchInputVal) {
     // dynamically Update the title based on the search input
@@ -37,6 +38,25 @@ const getLyricData = () => {
       .then((data) => {
         // Display results in console log
         console.log(data);
+
+        for (var i = 0; i < 10; i++) {
+          // Assuming 'data' is an array containing objects with a 'result' property
+          var lyricContainer = document.querySelector(".lyric-data");
+
+          // Create a new div element for each iteration
+          var thumbElement = document.createElement("div");
+
+          // Access the image URL from the 'data' array
+          var imageUrl = data.hits[i].result.song_art_image_thumbnail_url;
+          var title = data.hits[i].result.title;
+          console.log(title);
+
+          // Set the innerHTML of the thumbElement to an img tag with the specified URL
+          thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4 style="color:#99CC66">${title}</h4> `;
+
+          // Append the thumbElement to the lyricContainer
+          lyricContainer.appendChild(thumbElement);
+        }
 
         //Calls Display Thumbnails function
         // displaySearchResults(data.hits);
