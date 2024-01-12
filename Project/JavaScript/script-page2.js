@@ -1,4 +1,4 @@
-const apiKey = "151d327872msh78dcc08290906e3p19a183jsn27d336971c75"; // actual RapidAPI key
+const apiKey = "128021619emshab73d90a7f58805p108eacjsn084f36f61a53"; // actual RapidAPI key
 const appendSpotifyData = document.querySelector(".album-art");
 const btnTest = document.querySelector(".search-btn-test");
 const modalTrigger = document.querySelector(".lyric-card");
