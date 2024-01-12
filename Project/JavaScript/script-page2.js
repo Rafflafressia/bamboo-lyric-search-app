@@ -60,12 +60,62 @@ const getLyricData = () => {
 
         //Calls Display Thumbnails function
         // displaySearchResults(data.hits);
+        // *****CALL THE getLyrics Function run the ${result.result.id} as a parameter *****
       })
       .catch((error) => {
         console.error("Baboon: Problem fetching data", error);
       });
   }
 };
+
+//Function to run the songId parameter to get the specific lyrics and print on the page
+const getLyrics = (songId) => {
+  
+  // Create the API URl with search query parameters
+  const apiUrl = `https://genius-song-lyrics1.p.rapidapi.com/song/lyrics/?id=${songId}`;
+  const options = {
+      method: 'GET',
+      headers: {
+          'X-RapidAPI-Key': apiKey,
+          'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com',
+    },
+  
+  };
+
+  // Make the fetch request
+  fetch(apiUrl, options)
+      .then(response => response.json()).then(data => {
+        
+        //Display Api response once songId is run as parameter
+        console.log('API response for songId', songId, ':', data);
+        console.log(data.lyrics);
+        // Check if pathway and its steps exists. Uses optional chaining for nested objects, it checks each step and will return null if one pathway does not exist.
+        // efficient check to make sure pathways are present and if not we know where to look for issues.
+        if (data?.lyrics?.lyrics?.body?.html) {
+       
+        // Get the lyrics content
+        const lyrics = data.lyrics.lyrics.body.html;
+        console.log(lyrics);
+
+        // Get the lyrics container
+        const lyricsContainer = document.getElementById('lyrics-container');
+
+        console.log(lyricsContainer);
+
+        // Set the HTML content into <p> tags, prints lyrics to page 
+        lyricsContainer.innerHTML = `<p>${lyrics}</p>`;  
+        // Error message incase the lyrics arent found
+      } else {
+        console.error('No lyrics found for songId:', songId);
+      }
+    })
+    .catch(error => {
+      console.error('Problem fetching lyrics:', error);
+    });
+};
+
+
+
 
 // function to make the spotify API call
 const spotifyApiCall = (searchInputVal) => {
