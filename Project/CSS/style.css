@@ -155,6 +155,8 @@
   color: rgb(0, 0, 0);
   font-weight: bold;
   background-color: #ffffff;
+  margin-left: 5px;
+  cursor: pointer;
 }
 
 .lyric-data {
@@ -167,7 +169,7 @@
 .lyric-card {
   background-color: rgb(37, 37, 37);
   box-shadow: 3px 3px 10px black;
-  margin: 50px 75px;
+  margin: 40px 30px;
   transform: translate(-5px, -5px);
 }
 
@@ -175,7 +177,7 @@
   transition: 0.3s;
   transform: translate(0px, 0px);
   cursor: pointer;
-  box-shadow: -10px 10px 12px -4px #e5f3d4;
+  box-shadow: -10px 10px 12px -4px #99cc66;
 }
 
 /* Modal Box Content */
