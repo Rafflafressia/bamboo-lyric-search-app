@@ -108,7 +108,7 @@ const getLyrics = (songId) => {
 };
 
 // function to make the spotify API call
-const spotifyApiCall = (searchInputVal) => {
+const spotifyApiCall = (title) => {
   // Create the API URL
   const SpotifyApiUrl = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(
     title
@@ -138,7 +138,7 @@ const spotifyApiCall = (searchInputVal) => {
 };
 
 // Function to create a Spotify link and display it on the page
-const createSpotifyLink = (data, title) => {
+const createSpotifyLink = (data) => {
   // Create an anchor tag for the Spotify link
   const anchorTag = document.createElement("a");
 
