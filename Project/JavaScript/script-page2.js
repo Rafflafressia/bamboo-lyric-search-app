@@ -1,9 +1,14 @@
+// make sure that the DOM is fully loaded before continuing
 document.addEventListener("DOMContentLoaded", function () {
   const apiKey = "128021619emshab73d90a7f58805p108eacjsn084f36f61a53"; // actual RapidAPI key
-  const appendSpotifyData = document.querySelector(".album-art");
-  const btnTest = document.querySelector(".search-btn-test");
   const modalTrigger = document.querySelector(".lyric-card");
   const modalWindow = document.querySelector(".modal");
+
+  const showModalAfterClick = function (thumbElement) {
+    thumbElement.addEventListener("click", function () {
+      modalWindow.style.display = "block";
+    });
+  };
 
   // Function to make Genius Lyrics Api call
   const getArtistData = () => {
@@ -35,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => response.json())
         .then((data) => {
           // Display results in console log
-          console.log(data);
+          // console.log(data);
 
           for (let i = 0; i < 10; i++) {
             // Assuming 'data' is an array containing objects with a 'result' property
@@ -63,11 +68,22 @@ document.addEventListener("DOMContentLoaded", function () {
             // Set the innerHTML of the thumbElement to an img tag with the specified URL
             thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4 style="color:#99CC66; text-align: center; margin-top: 10px;">${title}</h4>`;
 
+            thumbElement.addEventListener("click", () => {
+              // Get the title from the clicked thumbnail
+              const clickedTitle = data.hits[i].result.title;
+
+              // Call the spotifyApiCall function with the clicked title
+              spotifyApiCall(clickedTitle);
+            });
+
             // Append the thumbElement to the lyricContainer
             lyricContainer.appendChild(thumbElement);
 
             // Pass the title to the spotifyApiCall function
-            spotifyApiCall(title);
+            showModalAfterClick(thumbElement);
+
+            getLyrics(result.result.id);
+            console.log(getLyrics);
           }
         })
         .catch((error) => {
@@ -120,11 +136,13 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // function to make the spotify API call
-  const spotifyApiCall = (title) => {
+  const spotifyApiCall = (clickedTitle) => {
     // Create the API URL
     const SpotifyApiUrl = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(
-      title
+      clickedTitle
     )}&type=tracks&offset=0&limit=1&numberOfTopResults=1`;
+
+    // console.log(clickedTitle, SpotifyApiUrl);
 
     // Define the options for the fetch request, including headers with API key
     const options = {
@@ -140,8 +158,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((data) => {
         // Display the API response data and create the Spotify link
-        console.log(data);
-        createSpotifyLink(data, title);
+        // console.log(data);
+        createSpotifyLink(data);
       })
       .catch((error) => {
         // Handle errors during the API call
@@ -173,28 +191,6 @@ document.addEventListener("DOMContentLoaded", function () {
     lyricContentElement.appendChild(anchorTag);
   };
 
-  // Function to initiate the Spotify API call and display results
-  const displaySpotifyResults = (title) => {
-    // Call the Spotify API with the provided title
-    spotifyApiCall(title);
-  };
-
-  // Event listener for button click to display spotify result
-  // btnTest.addEventListener("click", displaySpotifyResults);
-
-  // Call the function getLyricData
-  getArtistData();
-
-  document.body.addEventListener("click", function (event) {
-    if (event.target.classList.contains("lyric-card")) {
-      if (modalWindow) {
-        alert("WORKS");
-        modalWindow.style.display = "block";
-        // displaySpotifyResults(title);
-      }
-    }
-  });
-
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
     if (event.target == modalWindow) {
@@ -203,5 +199,8 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // Call the function getLyricData
-  // getLyricData();
+  getArtistData();
+
+  // Call the function getLyricData
+  // getLyrics(songId);
 });
