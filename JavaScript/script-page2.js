@@ -2,9 +2,13 @@
 document.addEventListener("DOMContentLoaded", function () {
   const apiKey = "128021619emshab73d90a7f58805p108eacjsn084f36f61a53"; // actual RapidAPI key
   const modalWindow = document.querySelector(".modal");
+  const modalContent = document.querySelector(".modal-content");
   const errorWindow = document.querySelector(".error-window");
   const songTitle = document.querySelector(".title-song");
   const searchButtonPage2 = document.querySelector(".search-btn-page-2");
+  const bambooBody = document.querySelector(".bamboo-body-bg");
+  const nightMd = document.querySelector(".moon");
+  const dayMd = document.querySelector(".sun");
 
   // Function to make Genius Lyrics Api call and display search results
   const getArtistData = () => {
@@ -39,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
           // console.log(data);
 
           for (let i = 0; i < 10; i++) {
-
             // Assuming 'data' is an array containing objects with a 'result' property
             var lyricContainer = document.querySelector(".lyric-data");
 
@@ -64,7 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
             thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4>${title}</h4>`;
 
             thumbElement.addEventListener("click", () => {
-
               // Get the title from the clicked thumbnail
               const clickedTitle = data.hits[i].result.title;
               songTitle.textContent = clickedTitle;
@@ -72,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
               // Call the spotifyApiCall function with the clicked title
               spotifyApiCall(clickedTitle);
-
             });
 
             // Append the thumbElement to the lyricContainer
@@ -80,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Pass the title to the spotifyApiCall function
             showModalAfterClick(thumbElement);
-
           }
         })
         .catch((error) => {
@@ -194,30 +194,51 @@ document.addEventListener("DOMContentLoaded", function () {
       modalWindow.style.display = "block";
     });
   };
-  
 
-  
-  
-  // Event listener for search button Page 2, will run user input for new search, and modal error for incorrect value 
+  // Event listener for search button Page 2, will run user input for new search, and modal error for incorrect value
   searchButtonPage2.addEventListener("click", () => {
-  // Get the value from the search input
-  const searchInputVal = document.querySelector(".search-Input-page-2").value.trim();
+    // Get the value from the search input
+    const searchInputVal = document
+      .querySelector(".search-Input-page-2")
+      .value.trim();
 
-  if (searchInputVal !== "") {
-    
-    // Redirect to the search-results page with the search input value as a parameter
-    window.location.href = `search-results.html?search=${encodeURIComponent(searchInputVal)}`;
-  } else {
-    
-    console.error("You need a search input value!");
-    
-    // Display an error message to the user on the current page
-    errorWindow.style.display = "block";
-  }
-});
+    if (searchInputVal !== "") {
+      // Redirect to the search-results page with the search input value as a parameter
+      window.location.href = `search-results.html?search=${encodeURIComponent(
+        searchInputVal
+      )}`;
+    } else {
+      console.error("You need a search input value!");
 
+      // Display an error message to the user on the current page
+      errorWindow.style.display = "block";
+    }
+  });
 
-  
+  // Dark Mode for second page - inverts colors on the page
+  nightMd.addEventListener("click", function () {
+    bambooBody.classList.remove("bg-yellow-50");
+    bambooBody.classList.add("bg-stone-900");
+    modalContent.classList.remove("bg-yellow-50");
+    modalContent.classList.add("bg-stone-900");
+    modalContent.style.color = "white";
+    document.body.style.color = "white";
+    dayMd.style.display = "block";
+    nightMd.style.display = "none";
+  });
+
+  // Light Mode for second page - inverts colors on the page
+  dayMd.addEventListener("click", function () {
+    bambooBody.classList.add("bg-yellow-50");
+    bambooBody.classList.remove("bg-stone-900");
+    modalContent.classList.add("bg-yellow-50");
+    modalContent.classList.remove("bg-stone-900");
+    modalContent.style.color = "black";
+    document.body.style.color = "black";
+    dayMd.style.display = "none";
+    nightMd.style.display = "block";
+  });
+
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
     if (event.target == modalWindow) {

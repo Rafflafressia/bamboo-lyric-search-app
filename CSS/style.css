@@ -13,8 +13,30 @@ a {
 .page-one-body {
   margin: auto;
   padding: 0;
-  background-color: rgb(43, 43, 43);
   color: white;
+}
+
+.sun {
+  display:none;
+  position:absolute;
+  right: 90px;
+  bottom: 600px;
+  float:right;
+}
+
+.sun:hover {
+    cursor: pointer;
+}
+
+.moon {
+  position:absolute;
+  right: 90px;
+  bottom: 600px;
+  float:right;
+}
+
+.moon:hover {
+    cursor: pointer;
 }
 
 /* container that holds header and searchbox */
@@ -27,16 +49,7 @@ a {
   justify-content: center;
 }
 
-/* styles the header of the website */
-
-.bamboo-header {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-/* styling for logo */
-
+/* Logo for Bamboo App */
 .bamboo-logo {
   width: 30%;
   margin: 30px;
@@ -113,6 +126,17 @@ a {
   font-size: 50px;
 }
 
+/* Reset Button Position */
+.reset-btn {
+  display: none;
+  margin:auto;
+  padding:0px; 
+  position:absolute; 
+  right:675px;
+  bottom: 57px;
+  z-index: 1; 
+}
+
 /* Styling for Page 2 */
 
 /* Body Class for Second Page */
@@ -121,14 +145,6 @@ a {
   padding: 0;
   background-color: rgb(43, 43, 43);
   color: white;
-}
-
-/* Header Container */
-.results-page-header {
-  margin: auto;
-  padding: 20px 0px;
-  width: 100%;
-  background-color: rgb(32, 32, 32);
 }
 
 /* Image of Logo */
