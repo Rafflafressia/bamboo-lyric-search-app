@@ -22,7 +22,7 @@
     <br />
 
     
-  <a href="https://rafflafressia.github.io/music-catalogue-app/">View Demo</a>
+  <a href="https://rafflafressia.github.io/music-catalogue-app/">View Demo</a> 
     
   <img src="assets/img/screenshot1.png" alt="search box with bamboo logo ontop">
 
