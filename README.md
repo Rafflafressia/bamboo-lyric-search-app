@@ -8,7 +8,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/Rafflafressia/music-catalogue-app">  
+  <a href="https://rafflafressia.github.io/bamboo-lyric-search-app/">  
     <img src="assets/bamboo-logo.svg" alt="Image of sunglasses with green headphones over them" width="300" height="300">
   </a>
 
@@ -17,14 +17,14 @@
   <p align="center">
     Every song deserves to be sung right. Bamboo - making lyric search a breeze.
     <br />
-    <a href="https://github.com/Rafflafressia/music-catalogue-app"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Rafflafressia/bamboo-lyric-search-app"><strong>Explore the docs »</strong></a>
     <br />
     <br />
 
     
-  <a href="https://rafflafressia.github.io/music-catalogue-app/">View Demo</a> 
+  <a href="https://rafflafressia.github.io/bamboo-lyric-search-app/">View Demo</a>
     
-  <img src="assets/img/screenshot1.png" alt="search box with bamboo logo ontop">
+  <img src="assets/bamboo-homepage.png" alt="search box with bamboo logo ontop">
 
   </p>
 </div>
@@ -92,7 +92,7 @@ Our team used the AGILE development methodology to work collaboratively and we u
 ## Getting Started
 
  <h3>For end users</h3> 
-https://rafflafressia.github.io/music-catalogue-app/  <br>
+https://rafflafressia.github.io/bamboo-lyric-search-app/  <br>
 
 
 
@@ -102,7 +102,7 @@ For anyone wanting to contribute <br>
 
 1. Clone the repo
    ```sh
-   git clone https://rafflafressia.github.io/music-catalogue-app.git
+   git clone https://github.com/Rafflafressia/bamboo-lyric-search-app.git
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -112,9 +112,9 @@ For anyone wanting to contribute <br>
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-<h3>gif of the Adventure-Forecast running. You can see the user testing the save functionality.</h3>
+<h3>Bamboo App gif. You can see the user testing the app functionality.</h3>
 
-![dashdemo](https://github.com/sbanati/Adventure-Forecast/assets/149754544/91d372c3-8be8-42b8-9167-7e883cb07413)
+![bamboogif](https://github.com/Rafflafressia/bamboo-lyric-search-app/assets/149754544/d3aec985-ec7f-4e60-af94-811c2df11b33)
 
 
 
@@ -132,10 +132,13 @@ For anyone wanting to contribute <br>
 
 <h3>Possible features</h3>
 
+
+* Applying the local storage feature to page 2 (due to MVP)
+* Applying modal error feature to page 2 (due to MVP)
 * Taking users to the specific spotify song link instead of the album
 * Customized playlists
-* Built in music player 
-
+* Built in music player
+  
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -181,7 +184,7 @@ Arkaw Banerjee - arkaw.banerjee@gmail.com
 Sahil Banati - [@twitter_TherealSLVR](https://twitter.com/TherealSLVR) - smbanati@gmail.com
 
 
-Project Link: https://github.com/sbanati/Adventure-Forecast
+Project Link: https://rafflafressia.github.io/bamboo-lyric-search-app/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
