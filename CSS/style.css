@@ -1,5 +1,8 @@
 h4 {
   text-align: center;
+  color:#99CC66;
+  overflow-wrap: break-word;
+  margin:20px;
 }
 
 a {
@@ -178,6 +181,7 @@ a {
 .lyric-card {
   background-color: rgb(37, 37, 37);
   box-shadow: 3px 3px 10px black;
+  width:300px;
   margin: 40px 30px;
   transform: translate(-5px, -5px);
 }

@@ -39,18 +39,17 @@ document.addEventListener("DOMContentLoaded", function () {
           // console.log(data);
 
           for (let i = 0; i < 10; i++) {
+
             // Assuming 'data' is an array containing objects with a 'result' property
             var lyricContainer = document.querySelector(".lyric-data");
 
             // Create a new div element for each iteration
             var thumbElement = document.createElement("div");
             thumbElement.classList.add("lyric-card"); // added the class with existing properties
-            thumbElement.classList.add("hover-effect"); // added the hover effect which pre-exists
 
             // Access the image URL from the 'data' array
             var imageUrl = data.hits[i].result.song_art_image_thumbnail_url;
             var title = data.hits[i].result.title;
-            // console.log(title);
 
             // Create an image element
             var img = document.createElement("img");
@@ -62,20 +61,26 @@ document.addEventListener("DOMContentLoaded", function () {
             img.height = 300;
 
             // Set the innerHTML of the thumbElement to an img tag with the specified URL
-            thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4 style="color:#99CC66; text-align: center; margin-top: 10px;">${title}</h4>`;
+            thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4>${title}</h4>`;
 
             thumbElement.addEventListener("click", () => {
+
               // Get the title from the clicked thumbnail
               const clickedTitle = data.hits[i].result.title;
               songTitle.textContent = clickedTitle;
               getLyrics(data.hits[i].result.id);
+
               // Call the spotifyApiCall function with the clicked title
               spotifyApiCall(clickedTitle);
+
             });
+
             // Append the thumbElement to the lyricContainer
             lyricContainer.appendChild(thumbElement);
+
             // Pass the title to the spotifyApiCall function
             showModalAfterClick(thumbElement);
+
           }
         })
         .catch((error) => {
@@ -195,8 +200,6 @@ document.addEventListener("DOMContentLoaded", function () {
   
   
   // Event listener for search button Page 2, will run user input for new search, and modal error for incorrect value 
-
-  
   searchButtonPage2.addEventListener("click", () => {
   // Get the value from the search input
   const searchInputVal = document.querySelector(".search-Input-page-2").value.trim();
