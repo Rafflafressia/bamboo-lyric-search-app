@@ -159,6 +159,8 @@ h4 {
   color: rgb(0, 0, 0);
   font-weight: bold;
   background-color: #ffffff;
+  margin-left: 5px;
+  cursor: pointer;
 }
 
 .lyric-data {
@@ -169,18 +171,17 @@ h4 {
 
 /* Lyric Card Styling */
 .lyric-card {
-  margin: 30px 40px;
-  width: 200px;
-  height: 200px;
   background-color: rgb(37, 37, 37);
   box-shadow: 3px 3px 10px black;
+  margin: 40px 30px;
+  transform: translate(-5px, -5px);
 }
 
 .lyric-card:hover {
-  width: 210px;
-  height: 210px;
-  transition: 0.2s;
+  transition: 0.3s;
+  transform: translate(0px, 0px);
   cursor: pointer;
+  box-shadow: -10px 10px 12px -4px #99cc66;
 }
 
 /* Modal Box Content */
