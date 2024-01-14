@@ -1,8 +1,10 @@
+// make sure that the DOM is fully loaded before continuing
 document.addEventListener("DOMContentLoaded", function () {
-  const apiKey = "128021619emshab73d90a7f58805p108eacjsn084f36f61a53";
+  const apiKey = "128021619emshab73d90a7f58805p108eacjsn084f36f61a53"; // actual RapidAPI key
+  const modalTrigger = document.querySelector(".lyric-card");
   const modalWindow = document.querySelector(".modal");
-  const songTitle = document.querySelector(".title-song");
 
+  // Function to make Genius Lyrics Api call
   const getArtistData = () => {
     // Get the search value from the URL parameters
     const urlParams = new URLSearchParams(window.location.search);
@@ -19,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const apiUrl = `https://genius-song-lyrics1.p.rapidapi.com/search/?q=${encodeURIComponent(
         searchInputVal
       )}&per_page=10`;
-
       const options = {
         method: "GET",
         headers: {
@@ -32,21 +33,33 @@ document.addEventListener("DOMContentLoaded", function () {
       fetch(apiUrl, options)
         .then((response) => response.json())
         .then((data) => {
-          const lyricContainer = document.querySelector(".lyric-data");
+          // Display results in console log
+          // console.log(data);
 
           for (let i = 0; i < 10; i++) {
-            var thumbElement = document.createElement("div");
-            thumbElement.classList.add("lyric-card");
-            thumbElement.classList.add("hover-effect");
+            // Assuming 'data' is an array containing objects with a 'result' property
+            var lyricContainer = document.querySelector(".lyric-data");
 
+            // Create a new div element for each iteration
+            var thumbElement = document.createElement("div");
+            thumbElement.classList.add("lyric-card"); // added the class with existing properties
+            thumbElement.classList.add("hover-effect"); // added the hover effect which pre-exists
+
+            // Access the image URL from the 'data' array
             var imageUrl = data.hits[i].result.song_art_image_thumbnail_url;
             var title = data.hits[i].result.title;
+            // console.log(title);
 
+            // Create an image element
             var img = document.createElement("img");
+            // Set the source attribute to the image URL
             img.src = imageUrl;
+
+            // Set the width and height attributes to 300 pixels
             img.width = 300;
             img.height = 300;
 
+            // Set the innerHTML of the thumbElement to an img tag with the specified URL
             thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4 style="color:#99CC66; text-align: center; margin-top: 10px;">${title}</h4>`;
 
             thumbElement.addEventListener("click", () => {
@@ -60,12 +73,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // Append the thumbElement to the lyricContainer
             lyricContainer.appendChild(thumbElement);
 
-            var resultsId = data.hits[i].result.id;
+            // Pass the title to the spotifyApiCall function
+            showModalAfterClick(thumbElement);
 
-            showModalAfterClick(thumbElement, resultsId);
-
-            // Commented out as it's unclear what this function is supposed to do
-            // getLyrics(result.result.id);
+            getLyrics(result.result.id);
+            console.log(getLyrics);
           }
         })
         .catch((error) => {
@@ -101,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log(lyrics);
 
           // Get the lyrics container
-          const lyricsContainer = document.querySelector(".lyric-container"); // the other is class
+          const lyricsContainer = document.getElementById("lyrics-container");
 
           console.log(lyricsContainer);
 
@@ -113,13 +125,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       })
       .catch((error) => {
-        console.error("Problem fetching data", error);
+        console.error("Problem fetching lyrics:", error);
       });
   };
 
-  const spotifyApiCall = (searchInputVal) => {
+  // function to make the spotify API call
+  const spotifyApiCall = (clickedTitle) => {
+    // Create the API URL
     const SpotifyApiUrl = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(
-      searchInputVal
+      clickedTitle
     )}&type=tracks&offset=0&limit=1&numberOfTopResults=1`;
 
     // console.log(clickedTitle, SpotifyApiUrl);
@@ -128,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": apiKey,
+        "X-RapidAPI-Key": apiKey, // Ensure 'apiKey' is defined somewhere in your code
         "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
       },
     };
@@ -171,6 +185,11 @@ document.addEventListener("DOMContentLoaded", function () {
     lyricContentElement.appendChild(anchorTag);
   };
 
+  const showModalAfterClick = function (thumbElement) {
+    thumbElement.addEventListener("click", function () {
+      modalWindow.style.display = "block";
+    });
+  };
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
     if (event.target == modalWindow) {
@@ -178,5 +197,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  // Call the function getLyricData
   getArtistData();
+
+  // Call the function getLyricData
+  // getLyrics(songId);
 });
