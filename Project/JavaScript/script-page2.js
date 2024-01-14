@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalTrigger = document.querySelector(".lyric-card");
   const modalWindow = document.querySelector(".modal");
   const songTitle = document.querySelector(".title-song");
-  const songTitle2 = document.querySelector(".title-song2");
   const ThumbnailImage = document.querySelector(".thumbnailImg");
 
   // Function to make Genius Lyrics Api call
@@ -84,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
               ThumbnailImage.appendChild(imgThumbnail);
 
               songTitle.textContent = clickedTitle;
-              songTitle2.textContent = clickedTitle;
               getLyrics(data.hits[i].result.id);
               // Call the spotifyApiCall function with the clicked title
               spotifyApiCall(clickedTitle);
