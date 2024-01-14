@@ -234,7 +234,7 @@ h4 {
 }
 
 .thumbnailImg {
-  margin: 10px 0px; /* Adjust spacing between title and thumbnail */
+  margin: 20px 0px; /* Adjust spacing between title and thumbnail */
 }
 
 .thumbnailImg img {
@@ -262,7 +262,7 @@ h4 {
 /* Additional styling for link and content */
 .spotify-link,
 .lyric-content {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   font-size: 1.14rem;
 }
 

@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
             img.height = 300;
 
             // Set the innerHTML of the thumbElement to an img tag with the specified URL
-            thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4 style="color:#99CC66; text-align: center; margin-top: 10px;">${title}</h4>`;
+            thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4 style="color:#99CC66; text-align: center; margin: 10px 0px;">${title}</h4>`;
 
             thumbElement.addEventListener("click", () => {
               // Get the title from the clicked thumbnail
