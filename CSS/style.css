@@ -2,6 +2,11 @@ h4 {
   text-align: center;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 .page-one-body {
   margin: auto;
   padding: 0;
