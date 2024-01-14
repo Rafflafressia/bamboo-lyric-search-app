@@ -10,17 +10,15 @@ a {
   text-decoration: none;
 }
 
-.page-one-body {
+.bamboo-body-bg {
   margin: auto;
   padding: 0;
   color: white;
 }
 
 .sun {
-  display:none;
   position:absolute;
-  right: 90px;
-  bottom: 600px;
+  margin: 70px 40px; 
   float:right;
 }
 
@@ -29,10 +27,10 @@ a {
 }
 
 .moon {
+  display:none;
   position:absolute;
-  right: 90px;
-  bottom: 600px;
   float:right;
+  margin: 70px 40px;
 }
 
 .moon:hover {
@@ -131,9 +129,6 @@ a {
   display: none;
   margin:auto;
   padding:0px; 
-  position:absolute; 
-  right:675px;
-  bottom: 57px;
   z-index: 1; 
 }
 
