@@ -215,31 +215,26 @@ h4 {
   animation-name: animatetop;
   animation-duration: 0.4s;
 }
-
 /* Lyrics */
 .lyric-container {
   display: flex;
   flex-direction: column;
+  align-items: center; /* Center align items horizontally */
+  text-align: center; /* Center align text */
 }
 
 .title-song {
   margin-bottom: 10px;
-  text-align: center;
 }
 
 .thumbnailImg {
-  display: flex;
-  margin-bottom: 10px; /* Adjust spacing between title and thumbnail */
+  margin: 10px 0px; /* Adjust spacing between title and thumbnail */
 }
 
 .thumbnailImg img {
+  display: block; /* Make sure the image is a block element */
+  margin: 0 auto; /* Center the image horizontally */
   box-shadow: -10px 10px 0px -4px #fff;
-}
-
-.details-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 .lyric-content a {
@@ -252,6 +247,10 @@ h4 {
 .spotify-link a {
   text-decoration: none;
   color: #99cc66;
+}
+
+.spotify-link {
+  text-align: center;
 }
 
 /* Additional styling for link and content */
