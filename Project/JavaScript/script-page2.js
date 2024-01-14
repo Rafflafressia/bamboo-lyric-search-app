@@ -4,6 +4,7 @@ const searchInputVal = urlParams.get("search");
 const btnTest = document.querySelector(".search-btn-test");
 const modalTrigger = document.querySelector(".lyric-card");
 const modalWindow = document.querySelector(".modal");
+const songTitle = document.querySelector(".title-song");
 
 const apiKey = "128021619emshab73d90a7f58805p108eacjsn084f36f61a53"; // actual RapidAPI key
 
@@ -36,32 +37,38 @@ const getArtistData = () => {
     fetch(apiUrl, options)
       .then((response) => response.json())
       .then((data) => {
+
         // Display results in console log
         console.log(data);
 
         for (let i = 0; i < 10; i++) {
           // Assuming 'data' is an array containing objects with a 'result' property
-          var lyricContainer = document.querySelector(".lyric-data");
+          const lyricContainer = document.querySelector(".lyric-data");
 
           // Create a new div element for each iteration
-          var thumbElement = document.createElement("div");
+          const thumbElement = document.createElement("div");
+          thumbElement.classList.add("lyric-card");
 
           // Access the image URL from the 'data' array
-          var imageUrl = data.hits[i].result.song_art_image_thumbnail_url;
-          var title = data.hits[i].result.title;
+          const imageUrl = data.hits[i].result.song_art_image_thumbnail_url;
+          const title = data.hits[i].result.title;
           console.log(title);
 
           // Set the innerHTML of the thumbElement to an img tag with the specified URL
-          thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4 style="color:#99CC66">${title}</h4> `;
+          thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4 style="color:#99CC66">${title}</h4>`;
+          
+          // Gives the thumbnails the onclick function to bring down the modal
+          thumbElement.addEventListener ("click", function(){
+            modalWindow.style.display = "block";
+            songTitle.textContent = title;
+            getLyrics(data.hits[i].result.id);
+          })
 
-          // Append the thumbElement to the lyricContainer
+          // Append thumbElement to the lyricContainer
           lyricContainer.appendChild(thumbElement);
         }
-
-        //Calls Display Thumbnails function
-        // displaySearchResults(data.hits);
-        // *****CALL THE getLyrics Function run the ${result.result.id} as a parameter *****
       })
+      
       .catch((error) => {
         console.error("Baboon: Problem fetching data", error);
       });
@@ -98,12 +105,13 @@ const getLyrics = (songId) => {
         console.log(lyrics);
 
         // Get the lyrics container
-        const lyricsContainer = document.getElementById('lyrics-container');
+        const lyricsContainer = document.querySelector('.lyric-content');
 
         console.log(lyricsContainer);
 
         // Set the HTML content into <p> tags, prints lyrics to page 
         lyricsContainer.innerHTML = `<p>${lyrics}</p>`;  
+        
         // Error message incase the lyrics arent found
       } else {
         console.error('No lyrics found for songId:', songId);
