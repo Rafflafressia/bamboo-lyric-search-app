@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalTrigger = document.querySelector(".lyric-card");
   const modalWindow = document.querySelector(".modal");
   const songTitle = document.querySelector(".title-song");
+  const searchButtonPage2 = document.querySelector(".search-btn-page-2");
 
   // Function to make Genius Lyrics Api call
   const getArtistData = () => {
@@ -188,6 +189,33 @@ document.addEventListener("DOMContentLoaded", function () {
       modalWindow.style.display = "block";
     });
   };
+  
+
+  
+  
+  
+  // Event listener for search button Page 2, will run user input for new search, and modal error for incorrect value 
+
+  
+  searchButtonPage2.addEventListener("click", () => {
+  // Get the value from the search input
+  const searchInputVal = document.querySelector(".search-Input-page-2").value.trim();
+
+  if (searchInputVal !== "") {
+    
+    // Redirect to the search-results page with the search input value as a parameter
+    window.location.href = `search-results.html?search=${encodeURIComponent(searchInputVal)}`;
+  } else {
+    
+    console.error("You need a search input value!");
+    
+    // Display an error message to the user on the current page
+    modalWindow.style.display = "block";
+  }
+});
+
+
+  
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
     if (event.target == modalWindow) {
