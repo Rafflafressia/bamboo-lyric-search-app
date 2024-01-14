@@ -2,6 +2,9 @@ const searchInput = document.querySelector(".search-Input");
 const searchButton = document.querySelector(".search-btn");
 const modalWindow = document.querySelector(".error-window");
 const resetButton = document.querySelector('.reset-btn')
+const bambooBody = document.querySelector('.bamboo-body-bg');
+const nightMd = document.querySelector('.moon');
+const dayMd = document.querySelector('.sun');
 
 searchButton.addEventListener("click", () => {
   const searchInputVal = searchInput.value.trim();
@@ -44,23 +47,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
         //Puts last search value back into the search field
         searchInput.value = savedSearchVal; 
-
+        resetButton.style.display = "block";
       }
 
   })
 
 // event listener for the reset button for search bar
 resetButton.addEventListener('click', () => {
-
+    
     searchInput.value = '';//Empties the search field
     clearSearchInput(); // Calls the clearSearchInput function which clears the input from Local Storage
+
+    if (searchInput.value == ''){
+      resetButton.style.display = "none";
+    }
   
 
 
 })
 
 
+nightMd.addEventListener("click", function(){
+  bambooBody.classList.remove("bg-yellow-50");
+  bambooBody.classList.add("bg-stone-900");
+  dayMd.style.display = "block";
+  nightMd.style.display = "none";
+})
 
+dayMd.addEventListener("click", function(){
+  bambooBody.classList.add("bg-yellow-50");
+  bambooBody.classList.remove("bg-stone-900");
+  dayMd.style.display = "none";
+  nightMd.style.display = "block";
+})
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
