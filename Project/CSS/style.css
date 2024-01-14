@@ -186,29 +186,29 @@ h4 {
 
 /* Modal Box Content */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 1;
   padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 90vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
 }
-
 .modal-content {
   position: relative;
   display: flex;
-  bottom: 50px;
-  flex-direction: row;
+  flex-direction: column;
   background-color: rgb(37, 37, 37);
   margin: auto;
-  padding: 0;
-  width: 720px;
+  padding: 20px;
+  bottom: 50px;
+  width: 720px; /* Change: Set your desired width */
+  max-width: 100%;
   height: auto;
+  box-sizing: border-box; /* Add this line to include padding and border in the width */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
@@ -216,15 +216,49 @@ h4 {
   animation-duration: 0.4s;
 }
 
-/* Modal Card Styling */
-
 /* Lyrics */
 .lyric-container {
-  position: relative;
-  left: 10px;
-  width: 60%;
-  margin: auto;
-  padding: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-song {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.thumbnailImg {
+  display: flex;
+  margin-bottom: 10px; /* Adjust spacing between title and thumbnail */
+}
+
+.thumbnailImg img {
+  box-shadow: -10px 10px 0px -4px #fff;
+}
+
+.details-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.lyric-content a {
+  pointer-events: none;
+  color: #fff; /* Set the text color */
+  text-decoration: none; /* Remove the underline */
+  cursor: default; /* Set the cursor to default, indicating it's not clickable */
+}
+
+.spotify-link a {
+  text-decoration: none;
+  color: #99cc66;
+}
+
+/* Additional styling for link and content */
+.spotify-link,
+.lyric-content {
+  margin-bottom: 10px;
+  font-size: 1.14rem;
 }
 
 /* Album Art */
