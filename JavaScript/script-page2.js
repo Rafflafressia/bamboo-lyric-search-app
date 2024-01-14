@@ -1,8 +1,8 @@
 // make sure that the DOM is fully loaded before continuing
 document.addEventListener("DOMContentLoaded", function () {
   const apiKey = "128021619emshab73d90a7f58805p108eacjsn084f36f61a53"; // actual RapidAPI key
-  const modalTrigger = document.querySelector(".lyric-card");
   const modalWindow = document.querySelector(".modal");
+  const errorWindow = document.querySelector(".error-window");
   const songTitle = document.querySelector(".title-song");
   const searchButtonPage2 = document.querySelector(".search-btn-page-2");
 
@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.error("You need a search input value!");
     
     // Display an error message to the user on the current page
-    modalWindow.style.display = "block";
+    errorWindow.style.display = "block";
   }
 });
 
@@ -222,7 +222,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Call the function getLyricData
   getArtistData();
-
-  // Call the function getLyricData
-  // getLyrics(songId);
 });
