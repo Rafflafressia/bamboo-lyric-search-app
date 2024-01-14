@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const songTitle = document.querySelector(".title-song");
   const searchButtonPage2 = document.querySelector(".search-btn-page-2");
 
-  // Function to make Genius Lyrics Api call
+  // Function to make Genius Lyrics Api call and display search results
   const getArtistData = () => {
     // Get the search value from the URL parameters
     const urlParams = new URLSearchParams(window.location.search);
@@ -196,7 +196,6 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   
 
-  
   
   
   // Event listener for search button Page 2, will run user input for new search, and modal error for incorrect value 
