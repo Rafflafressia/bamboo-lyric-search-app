@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalTrigger = document.querySelector(".lyric-card");
   const modalWindow = document.querySelector(".modal");
   const songTitle = document.querySelector(".title-song");
+  const ThumbnailImage = document.querySelector(".thumbnailImg");
 
   // Function to make Genius Lyrics Api call
   const getArtistData = () => {
@@ -66,6 +67,21 @@ document.addEventListener("DOMContentLoaded", function () {
             thumbElement.addEventListener("click", () => {
               // Get the title from the clicked thumbnail
               const clickedTitle = data.hits[i].result.title;
+              const clickedThumbnail =
+                data.hits[i].result.song_art_image_thumbnail_url;
+
+              // Create an image element
+              var imgThumbnail = document.createElement("img");
+              // Set the source attribute to the image URL
+              imgThumbnail.src = clickedThumbnail;
+
+              // Set the width and height attributes to 300 pixels
+              imgThumbnail.width = 240;
+              imgThumbnail.height = 240;
+
+              ThumbnailImage.innerHTML = "";
+              ThumbnailImage.appendChild(imgThumbnail);
+
               songTitle.textContent = clickedTitle;
               getLyrics(data.hits[i].result.id);
               // Call the spotifyApiCall function with the clicked title
@@ -110,12 +126,12 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log(lyrics);
 
           // Get the lyrics container
-          const lyricsContainer = document.querySelector(".lyric-content");
+          const lyricsContent = document.querySelector(".lyric-content");
 
-          console.log(lyricsContainer);
+          console.log(lyricsContent);
 
           // Set the HTML content into <p> tags, prints lyrics to page
-          lyricsContainer.innerHTML = `<p>${lyrics}</p>`;
+          lyricsContent.innerHTML = `<p>${lyrics}</p>`;
 
           // Error message incase the lyrics arent found
         } else {
@@ -133,8 +149,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const SpotifyApiUrl = `https://spotify23.p.rapidapi.com/search/?q=${encodeURIComponent(
       clickedTitle
     )}&type=tracks&offset=0&limit=1&numberOfTopResults=1`;
-
-    // console.log(clickedTitle, SpotifyApiUrl);
 
     // Define the options for the fetch request, including headers with API key
     const options = {
