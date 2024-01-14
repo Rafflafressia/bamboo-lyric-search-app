@@ -113,12 +113,13 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log(lyrics);
 
           // Get the lyrics container
-          const lyricsContainer = document.getElementById("lyrics-container");
+          const lyricsContainer = document.querySelector(".lyric-content");
 
           console.log(lyricsContainer);
 
           // Set the HTML content into <p> tags, prints lyrics to page
           lyricsContainer.innerHTML = `<p>${lyrics}</p>`;
+
           // Error message incase the lyrics arent found
         } else {
           console.error("No lyrics found for songId:", songId);
