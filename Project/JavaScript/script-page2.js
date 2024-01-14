@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const apiKey = "128021619emshab73d90a7f58805p108eacjsn084f36f61a53"; // actual RapidAPI key
   const modalTrigger = document.querySelector(".lyric-card");
   const modalWindow = document.querySelector(".modal");
+  const songTitle = document.querySelector(".title-song");
 
   // Function to make Genius Lyrics Api call
   const getArtistData = () => {
@@ -65,8 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
             thumbElement.addEventListener("click", () => {
               // Get the title from the clicked thumbnail
               const clickedTitle = data.hits[i].result.title;
-              modalWindow.style.display = "block";
-              songTitle.textContent = title;
+              songTitle.textContent = clickedTitle;
               getLyrics(data.hits[i].result.id);
               // Call the spotifyApiCall function with the clicked title
               spotifyApiCall(clickedTitle);
@@ -174,13 +174,13 @@ document.addEventListener("DOMContentLoaded", function () {
     anchorTag.textContent = "Spotify Link";
 
     // Find the HTML element with the class 'lyric-content'
-    const lyricContentElement = document.querySelector(".lyric-content");
+    const spotifyLinkEl = document.querySelector(".spotify-link");
 
     // Update the innerHTML of the element to display the link label
-    lyricContentElement.innerHTML = "Link: ";
+    spotifyLinkEl.innerHTML = "Link: ";
 
     // Append the anchor tag to the 'lyric-content' div
-    lyricContentElement.appendChild(anchorTag);
+    spotifyLinkEl.appendChild(anchorTag);
   };
 
   const showModalAfterClick = function (thumbElement) {
