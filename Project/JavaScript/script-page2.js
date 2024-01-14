@@ -65,19 +65,16 @@ document.addEventListener("DOMContentLoaded", function () {
             thumbElement.addEventListener("click", () => {
               // Get the title from the clicked thumbnail
               const clickedTitle = data.hits[i].result.title;
-
+              modalWindow.style.display = "block";
+              songTitle.textContent = title;
+              getLyrics(data.hits[i].result.id);
               // Call the spotifyApiCall function with the clicked title
               spotifyApiCall(clickedTitle);
             });
-
             // Append the thumbElement to the lyricContainer
             lyricContainer.appendChild(thumbElement);
-
             // Pass the title to the spotifyApiCall function
             showModalAfterClick(thumbElement);
-
-            getLyrics(result.result.id);
-            console.log(getLyrics);
           }
         })
         .catch((error) => {
