@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalContent = document.querySelector(".modal-content");
   const errorWindow = document.querySelector(".error-window");
   const songTitle = document.querySelector(".title-song");
-  const songTitle2 = document.querySelector(".title-song2");
   const ThumbnailImage = document.querySelector(".thumbnailImg");
   const searchButtonPage2 = document.querySelector(".search-btn-page-2");
   const bambooBody = document.querySelector(".bamboo-body-bg");
@@ -66,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             img.height = 300;
 
             // Set the innerHTML of the thumbElement to an img tag with the specified URL
-            thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4>${title}</h4>`;
+            thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4 style='margin-top: 15px; margin-bottom: 10px;'>${title}</h4>`;
 
             thumbElement.addEventListener("click", () => {
               // Get the title from the clicked thumbnail
@@ -87,7 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
               ThumbnailImage.appendChild(imgThumbnail);
 
               songTitle.textContent = clickedTitle;
-              songTitle2.textContent = clickedTitle;
               getLyrics(data.hits[i].result.id);
 
               // Call the spotifyApiCall function with the clicked title
