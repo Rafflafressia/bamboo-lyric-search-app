@@ -10,84 +10,68 @@ document.addEventListener("DOMContentLoaded", function () {
   const nightMd = document.querySelector(".moon");
   const dayMd = document.querySelector(".sun");
 
-  // Function to make Genius Lyrics Api call and display search results
-  const getArtistData = () => {
-    // Get the search value from the URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const searchInputVal = urlParams.get("search");
+ // Function to make Genius Lyrics Api call
+const getArtistData = () => {
+  // Get the search value from the URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchInputVal = urlParams.get("search");
 
-    // Check if searchInputValue exists and make API call if needed
-    if (searchInputVal) {
-      // dynamically Update the title based on the search input
-      document.querySelector(
-        ".search-results-heading"
-      ).innerText = `Search Results for ${searchInputVal}`;
+  // Check if searchInputValue exists and make API call if needed
+  if (searchInputVal) {
+    // dynamically Update the title based on the search input
+    document.querySelector(
+      ".search-results-heading"
+    ).innerText = `Search Results for ${searchInputVal}`;
 
-      // Create the API URL with the search query
-      const apiUrl = `https://genius-song-lyrics1.p.rapidapi.com/search/?q=${encodeURIComponent(
-        searchInputVal
-      )}&per_page=10`;
-      const options = {
-        method: "GET",
-        headers: {
-          "X-RapidAPI-Key": apiKey,
-          "X-RapidAPI-Host": "genius-song-lyrics1.p.rapidapi.com",
-        },
-      };
+    // Create the API URL with the search query
+    const apiUrl = `https://genius-song-lyrics1.p.rapidapi.com/search/?q=${encodeURIComponent(
+      searchInputVal
+    )}&per_page=10`;
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": apiKey,
+        "X-RapidAPI-Host": "genius-song-lyrics1.p.rapidapi.com",
+      },
+    };
 
-      // Make fetch request
-      fetch(apiUrl, options)
-        .then((response) => response.json())
-        .then((data) => {
-          // Display results in console log
-          // console.log(data);
+    // Make fetch request
+    fetch(apiUrl, options)
+      .then((response) => response.json())
+      .then((data) => {
+        // Call the displayResults function to handle displaying the results
+        displayResults(data.hits);
+      })
+      .catch((error) => {
+        console.error("Baboon: Problem fetching data", error);
+      });
+  }
+};
 
-          for (let i = 0; i < 10; i++) {
-            // Assuming 'data' is an array containing objects with a 'result' property
-            var lyricContainer = document.querySelector(".lyric-data");
+// Function to display search results
+const displayResults = (hits) => {
+  for (let i = 0; i < 10; i++) {
+    var lyricContainer = document.querySelector(".lyric-data");
+    var thumbElement = document.createElement("div");
+    thumbElement.classList.add("lyric-card");
 
-            // Create a new div element for each iteration
-            var thumbElement = document.createElement("div");
-            thumbElement.classList.add("lyric-card"); // added the class with existing properties
+    var imageUrl = hits[i].result.song_art_image_thumbnail_url;
+    var title = hits[i].result.title;
 
-            // Access the image URL from the 'data' array
-            var imageUrl = data.hits[i].result.song_art_image_thumbnail_url;
-            var title = data.hits[i].result.title;
+    thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4>${title}</h4>`;
 
-            // Create an image element
-            var img = document.createElement("img");
-            // Set the source attribute to the image URL
-            img.src = imageUrl;
+    thumbElement.addEventListener("click", () => {
+      const clickedTitle = hits[i].result.title;
+      songTitle.textContent = clickedTitle;
+      getLyrics(hits[i].result.id);
+      spotifyApiCall(clickedTitle);
+    });
 
-            // Set the width and height attributes to 300 pixels
-            img.width = 300;
-            img.height = 300;
+    lyricContainer.appendChild(thumbElement);
+    showModalAfterClick(thumbElement);
+  }
+};
 
-            // Set the innerHTML of the thumbElement to an img tag with the specified URL
-            thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4>${title}</h4>`;
-
-            thumbElement.addEventListener("click", () => {
-              // Get the title from the clicked thumbnail
-              const clickedTitle = data.hits[i].result.title;
-              songTitle.textContent = clickedTitle;
-              getLyrics(data.hits[i].result.id);
-
-              // Call the spotifyApiCall function with the clicked title
-              spotifyApiCall(clickedTitle);
-            });
-
-            // Append the thumbElement to the lyricContainer
-            lyricContainer.appendChild(thumbElement);
-
-            // Pass the title to the spotifyApiCall function
-            showModalAfterClick(thumbElement);
-          }
-        })
-        .catch((error) => {
-          console.error("Baboon: Problem fetching data", error);
-        });
-    }
-  };
 
   //Function to run the songId parameter to get the specific lyrics and print on the page
   const getLyrics = (songId) => {
@@ -246,6 +230,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  // Call the function getLyricData
+  // Call the function getArtistData
   getArtistData();
 });
