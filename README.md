@@ -133,11 +133,20 @@ For anyone wanting to contribute <br>
 <h3>Possible features</h3>
 
 
-* Applying the local storage feature to page 2 (due to MVP)
-* Applying modal error feature to page 2 (due to MVP)
-* Taking users to the specific spotify song link instead of the album
-* Customized playlists
+* Create User Accounts
+* Allow users to save favorite songs, artists or lyrics
 * Built in music player
+* Multilingual Support
+* Integrate with more music API's such as soundcloud, apple music
+
+MVP optimization features ;
+
+* Applying saving last search to page 2 search box
+* Applying modal error feature to page 2 
+* Taking users to the specific spotify song link instead of the album
+* Paginate search results on overpopulation
+* Apply local storage to light/dark mode
+  
   
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
