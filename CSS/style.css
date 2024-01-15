@@ -6,9 +6,9 @@
 
 h4 {
   text-align: center;
-  color:#99CC66;
+  color: #99cc66;
   overflow-wrap: break-word;
-  margin:20px;
+  margin: 20px;
 }
 
 a {
@@ -23,26 +23,26 @@ a {
 }
 
 .sun {
-  display:none;
-  position:absolute;
+  display: none;
+  position: absolute;
   right: 90px;
   bottom: 600px;
-  float:right;
+  float: right;
 }
 
 .sun:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .moon {
-  position:absolute;
+  position: absolute;
   right: 90px;
   bottom: 600px;
-  float:right;
+  float: right;
 }
 
 .moon:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /* container that holds header and searchbox */
@@ -135,12 +135,12 @@ a {
 /* Reset Button Position */
 .reset-btn {
   display: none;
-  margin:auto;
-  padding:0px; 
-  position:absolute; 
-  right:675px;
+  margin: auto;
+  padding: 0px;
+  position: absolute;
+  right: 675px;
   bottom: 57px;
-  z-index: 1; 
+  z-index: 1;
 }
 
 /* Styling for Page 2 */
@@ -203,7 +203,7 @@ a {
 .lyric-card {
   background-color: rgb(37, 37, 37);
   box-shadow: 3px 3px 10px black;
-  width:300px;
+  width: 300px;
   margin: 40px 30px;
   transform: translate(-5px, -5px);
 }
@@ -255,22 +255,11 @@ a {
 }
 
 .title-song {
-  position: absolute;
-  color: #99cc66;
-  letter-spacing: 2px;
-  text-transform: capitalize;
-}
-
-.title-song2 {
-  top: 15px;
-  left: 20px;
-  position: relative;
   color: white;
   letter-spacing: 2px;
+  text-transform: capitalize;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 0.8px;
-  font-size: 40px;
-  text-transform: capitalize;
 }
 
 .thumbnailImg {
