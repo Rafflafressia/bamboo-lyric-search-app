@@ -50,10 +50,26 @@ document.addEventListener("DOMContentLoaded", function () {
       var imageUrl = hits[i].result.song_art_image_thumbnail_url;
       var title = hits[i].result.title;
 
-      thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4>${title}</h4>`;
+      thumbElement.innerHTML = `<img src='${imageUrl}' alt='Thumbnail Image'><h4 style='margin-top: 10px; margin-bottom: 10px;'>${title}</h4>`;
 
       thumbElement.addEventListener("click", () => {
         const clickedTitle = hits[i].result.title;
+        const clickedThumbnail = hits[i].result.song_art_image_thumbnail_url;
+
+        // Create an image element
+        var imgThumbnail = document.createElement("img");
+        // Set the source attribute to the image URL
+        imgThumbnail.src = clickedThumbnail;
+
+        // Set the width and height attributes to 300 pixels
+        imgThumbnail.width = 240;
+        imgThumbnail.height = 240;
+
+        ThumbnailImage.innerHTML = "";
+        ThumbnailImage.appendChild(imgThumbnail);
+
+        songTitle.textContent = clickedTitle;
+
         songTitle.textContent = clickedTitle;
         getLyrics(hits[i].result.id);
         spotifyApiCall(clickedTitle);
