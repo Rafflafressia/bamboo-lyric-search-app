@@ -255,6 +255,16 @@ a {
 }
 
 .title-song {
+  position: absolute;
+  color: #99cc66;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+
+.title-song2 {
+  top: 15px;
+  left: 20px;
+  position: relative;
   color: white;
   letter-spacing: 2px;
   -webkit-text-fill-color: transparent;
@@ -264,7 +274,7 @@ a {
 }
 
 .thumbnailImg {
-  margin: 30px 0px; /* Adjust spacing between title and thumbnail */
+  margin: 40px 0px; /* Adjust spacing between title and thumbnail */
 }
 
 .thumbnailImg img {
