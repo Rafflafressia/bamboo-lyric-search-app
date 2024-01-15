@@ -165,6 +165,7 @@ a {
   font-size: 50px;
   font-weight: bold;
   margin: 40px 40px;
+  color: #fff;
 }
 
 .search-box-page-2 {
@@ -259,7 +260,7 @@ a {
   letter-spacing: 2px;
   text-transform: capitalize;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 0.8px;
+  -webkit-text-stroke-width: 1px;
 }
 
 .thumbnailImg {
@@ -292,7 +293,12 @@ a {
 .spotify-link,
 .lyric-content {
   margin-bottom: 15px;
-  font-size: 1.14rem;
+  font-size: 1.2rem;
+}
+
+.lyric-content,
+.spotify-link {
+  color: #fff;
 }
 
 /* Album Art */
