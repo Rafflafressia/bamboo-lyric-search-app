@@ -16,7 +16,7 @@ a {
   text-decoration: none;
 }
 
-.page-one-body {
+.bamboo-body-bg {
   margin: auto;
   padding: 0;
   color: white;
@@ -27,6 +27,9 @@ a {
   position: absolute;
   right: 90px;
   bottom: 600px;
+  float: right;
+  position: absolute;
+  margin: 70px 40px;
   float: right;
 }
 
@@ -39,6 +42,10 @@ a {
   right: 90px;
   bottom: 600px;
   float: right;
+  display: none;
+  position: absolute;
+  float: right;
+  margin: 70px 40px;
 }
 
 .moon:hover {
