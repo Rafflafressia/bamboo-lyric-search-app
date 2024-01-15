@@ -244,7 +244,7 @@ a {
   margin: auto;
   padding: 20px;
   bottom: 50px;
-  width: 720px; /* Change: Set your desired width */
+  width: 700px; /* Change: Set your desired width */
   max-width: 100%;
   height: auto;
   box-sizing: border-box; /* Add this line to include padding and border in the width */
